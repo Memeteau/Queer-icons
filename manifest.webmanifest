@@ -1,0 +1,8 @@
+{
+  "name": "Queer Icons",
+  "short_name": "Queer Icons",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d0912",
+  "theme_color": "#24122f"
+}

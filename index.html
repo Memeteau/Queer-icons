@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#24122f">
+<title>Queer Icons — Top Trumps</title>
+<style>
+:root{
+  --bg:#0d0912;--panel:#21132a;--panel2:#2b1737;--purple:#7f43a2;
+  --gold:#f1cf54;--text:#fff;--muted:#c9bacf;--line:#614272;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at 50% 0,#3d1b4d 0,#211129 30%,#0d0912 72%);
+  min-height:100vh;
+}
+button,select{font:inherit}
+button{touch-action:manipulation}
+.wrap{width:min(1100px,calc(100% - 24px));margin:auto;padding:24px 0 70px}
+h1{font-size:clamp(38px,8vw,72px);line-height:.9;margin:8px 0 16px;letter-spacing:-.04em}
+.subtitle{color:var(--muted);margin:0 0 22px}
+.panel{background:rgba(33,19,42,.94);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 24px 80px #0007}
+.hidden{display:none!important}
+.setup{display:grid;gap:14px;max-width:660px}
+label{font-weight:700}
+select{width:100%;padding:13px 14px;margin-top:6px;border-radius:15px;border:1px solid var(--line);background:#160e1d;color:#fff}
+button{border:0;border-radius:16px;padding:13px 16px;font-weight:800;cursor:pointer}
+.primary{background:var(--gold);color:#23132c}
+.secondary{background:#3b2447;color:#fff;border:1px solid var(--line)}
+.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.metric{background:#1a1021;border:1px solid #4c3458;border-radius:14px;padding:10px;text-align:center}
+.metric small{display:block;color:var(--muted)}
+.metric strong{font-size:20px}
+.players{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+.badge{background:#392047;border:1px solid #624675;border-radius:999px;padding:7px 10px;font-size:13px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.78fr);gap:18px}
+.card{overflow:hidden;background:#f7f0df;color:#271b2c;border:3px solid var(--gold);border-radius:28px;box-shadow:0 18px 60px #0007}
+
+/* IMPORTANT : on montre maintenant l’illustration ENTIÈRE */
+.portrait{
+  background:#1a1021;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:260px;
+  max-height:none;
+  overflow:hidden;
+}
+.portrait img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  object-position:center center;
+}
+.portrait .fallback{font-size:70px;font-weight:900;color:white;padding:90px 20px}
+
+.cardhead{padding:14px 16px 10px;background:#261531;color:#fff}
+.cardhead h2{margin:0;font-size:27px;line-height:1}
+.cardhead .mod{font-size:11px;letter-spacing:.13em;margin-top:6px;color:#e3d2ea}
+.stats{background:#f7f0df}
+.stat{
+  display:grid;grid-template-columns:minmax(0,1fr) 62px;gap:10px;align-items:center;
+  padding:0;border-top:1px solid #decfb8;
+}
+.stat:nth-child(even){background:#eee3d3}
+.statbutton{
+  width:100%;background:transparent;color:#271b2c;text-align:left;
+  padding:10px 12px;border-radius:0;font-weight:800;
+  display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:10px;
+}
+.statText{display:flex;flex-direction:column;gap:2px;min-width:0}
+.statName{font-weight:900;line-height:1.05}
+.statComment{font-size:12px;font-weight:600;line-height:1.2;color:#5b4c55}
+.catIcon{width:28px;height:28px;display:inline-grid;place-items:center;
+  border-radius:50%;background:#fff9;font-size:17px;flex:0 0 28px;}
+.statbutton:active{background:#e5d6bf}
+.score{background:#7f43a2;color:#fff;text-align:center;padding:6px 5px;border-radius:999px;font-weight:900;min-width:48px;margin-right:12px}
+.table{display:grid;gap:10px}
+.seat{background:#1a1021;border:1px solid #4c3458;border-radius:16px;padding:12px}
+.seat.winner{outline:2px solid var(--gold)}
+.seat .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.muted{color:var(--muted);font-size:13px}
+.result{margin-top:12px;padding:14px;border:1px solid #75558a;border-radius:16px;background:#2f193a}
+.next{
+  width:100%;margin-top:10px;
+  position:sticky;bottom:12px;z-index:10;
+  box-shadow:0 10px 30px #0008;
+}
+.error{padding:16px;border:1px solid #8b5070;border-radius:18px;background:#341526}
+
+@media(max-width:760px){
+  .grid{grid-template-columns:1fr}
+  .topbar{grid-template-columns:repeat(2,1fr)}
+  .wrap{width:min(100% - 16px,700px);padding-top:16px}
+  .portrait{min-height:220px;max-height:55vh}
+  .portrait img{max-height:55vh}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>QUEER ICONS</h1>
+  <p class="subtitle">Top Trumps historique • 39 cartes • 9 statistiques • 2–6 joueurs</p>
+</header>
+
+<div id="loading" class="panel">Chargement des 39 cartes…</div>
+<div id="error" class="error hidden"></div>
+
+<section id="setup" class="panel setup hidden">
+  <div>
+    <label for="playerCount">Nombre de joueurs</label>
+    <select id="playerCount">
+      <option value="2">2 joueurs</option>
+      <option value="3">3 joueurs</option>
+      <option value="4">4 joueurs</option>
+      <option value="5">5 joueurs</option>
+      <option value="6">6 joueurs</option>
+    </select>
+  </div>
+  <div>
+    <label for="gameMode">Mode de jeu</label>
+    <select id="gameMode">
+      <option value="classic">Classique — scores visibles</option>
+      <option value="blind">Aveugle — commentaires visibles, scores cachés</option>
+    </select>
+  </div>
+  <button id="startBtn" class="primary">Distribuer les cartes</button>
+</section>
+
+<section id="game" class="hidden">
+  <div class="topbar">
+    <div class="metric"><small>Manche</small><strong id="round">1</strong></div>
+    <div class="metric"><small>Leader</small><strong id="leader">J1</strong></div>
+    <div class="metric"><small>Cagnotte</small><strong id="potCount">0</strong></div>
+    <div class="metric"><small>Cartes en jeu</small><strong id="totalCount">39</strong></div>
+  </div>
+
+  <div id="players" class="players"></div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="portrait">
+        <img id="portraitImg" alt="">
+        <div id="portraitFallback" class="fallback hidden">QI</div>
+      </div>
+      <div class="cardhead">
+        <h2 id="cardName"></h2>
+        <div id="modifier" class="mod"></div>
+      </div>
+      <div id="stats" class="stats"></div>
+    </article>
+
+    <aside>
+      <div class="panel">
+        <h3 style="margin-top:0">Table</h3>
+        <div id="table" class="table"></div>
+        <div id="result" class="result hidden"></div>
+        <button id="nextBtn" class="primary next hidden">Manche suivante</button>
+        <button id="restartBtn" class="secondary next">Nouvelle partie</button>
+      </div>
+    </aside>
+  </div>
+</section>
+</div>
+
+<script>
+const CATEGORY_META = [
+  {name:"Courage",icon:"💪",color:"#F4A261"},
+  {name:"Martyrologie",icon:"🩸",color:"#E76F51"},
+  {name:"Miracle",icon:"✨",color:"#E9C46A"},
+  {name:"Drag potential",icon:"👠",color:"#C77DFF"},
+  {name:"Empreinte culturelle",icon:"🎬",color:"#90BE6D"},
+  {name:"Extravagance sexuelle",icon:"💋",color:"#F28482"},
+  {name:"Coming out",icon:"🌈",color:"#4CC9F0"},
+  {name:"Fait avancer la cause",icon:"✊",color:"#43AA8B"},
+  {name:"Flamboyance des tenues",icon:"👗",color:"#F9C74F"}
+];
+const CATEGORIES=CATEGORY_META.map(x=>x.name);
+
+let CARDS=[];
+let S={n:2,hands:[],leader:0,round:1,pot:[],locked:false,mode:"classic"};
+
+const $=id=>document.getElementById(id);
+
+function initials(name){
+  return name.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join("").toUpperCase();
+}
+function shuffle(a){
+  a=[...a];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function alive(){
+  return S.hands.map((h,i)=>h.length?i:null).filter(i=>i!==null);
+}
+function normalizeCard(c,i){
+  const name=c.name??c.Nom??c.nom??("Carte "+(i+1));
+  const raw=c.scores??c.stats??c.statistics??{};
+  const scores={};
+  CATEGORIES.forEach(cat=>{
+    let v=raw[cat];
+    if(v===undefined) v=c[cat];
+    scores[cat]=Number(v);
+  });
+  return{
+    id:c.id??String(i+1),
+    name,
+    modifier:c.modifier??c.Modulateur??"",
+    image:c.image??c.imagePath??c.visual??c["Fichier visuel"]??"",
+    scores,
+    comments:c.comments??{}
+  };
+}
+function validate(cards){
+  if(!Array.isArray(cards)||cards.length!==39){
+    throw new Error("Le fichier cards.json doit contenir exactement 39 cartes.");
+  }
+  cards.forEach(c=>{
+    CATEGORIES.forEach(cat=>{
+      const v=c.scores[cat];
+      if(!Number.isFinite(v)||v<0||v>100){
+        throw new Error(`Statistique invalide : ${c.name} / ${cat}`);
+      }
+    });
+  });
+}
+function resolveImagePath(path){
+  if(!path) return "";
+  path=String(path).replace(/^\.?\//,"");
+  if(path.startsWith("images/")) return path;
+  return "images/" + path.split("/").pop();
+}
+
+async function load(){
+  try{
+    const res=await fetch("cards.json?v=9cat-comments-blind-4",{cache:"no-store"});
+    if(!res.ok) throw new Error("Impossible de charger cards.json");
+    const json=await res.json();
+    const raw=Array.isArray(json)?json:(json.cards??json.data??[]);
+    CARDS=raw.map(normalizeCard);
+    validate(CARDS);
+    $("loading").classList.add("hidden");
+    $("setup").classList.remove("hidden");
+  }catch(err){
+    $("loading").classList.add("hidden");
+    $("error").classList.remove("hidden");
+    $("error").innerHTML="<strong>Erreur :</strong> "+err.message;
+    console.error(err);
+  }
+}
+
+function start(){
+  S.n=Number($("playerCount").value);
+  S.mode=$("gameMode").value;
+  S.hands=Array.from({length:S.n},()=>[]);
+  shuffle(CARDS).forEach((c,i)=>S.hands[i%S.n].push(c));
+  S.leader=0;S.round=1;S.pot=[];S.locked=false;
+  $("setup").classList.add("hidden");
+  $("game").classList.remove("hidden");
+  render();
+}
+
+function render(){
+  const a=alive();
+  if(a.length===1){end(a[0]);return;}
+  if(!S.hands[S.leader]||!S.hands[S.leader].length) S.leader=a[0];
+
+  const c=S.hands[S.leader][0];
+  $("round").textContent=S.round;
+  $("leader").textContent="J"+(S.leader+1);
+  $("potCount").textContent=S.pot.length;
+  $("totalCount").textContent=S.hands.reduce((n,h)=>n+h.length,0)+S.pot.length;
+  $("cardName").textContent=c.name;
+  $("modifier").textContent=(c.modifier||"")+(S.mode==="blind"?" · MODE AVEUGLE":"");
+
+  const img=$("portraitImg"),fb=$("portraitFallback");
+  img.classList.remove("hidden");
+  fb.classList.add("hidden");
+  img.alt=c.name;
+  img.src=resolveImagePath(c.image);
+  img.onerror=()=>{
+    img.classList.add("hidden");
+    fb.textContent=initials(c.name);
+    fb.classList.remove("hidden");
+  };
+
+  $("stats").innerHTML="";
+  CATEGORIES.forEach(cat=>{
+    const row=document.createElement("div");
+    row.className="stat";
+
+    const b=document.createElement("button");
+    b.type="button";
+    b.className="statbutton";
+    const meta=CATEGORY_META.find(x=>x.name===cat);
+    const comment=c.comments?.[cat]||"";
+    b.innerHTML=`<span class="catIcon">${meta.icon}</span><span class="statText"><span class="statName">${cat}</span><span class="statComment">${comment}</span></span>`;
+    b.style.background=meta.color+"33";
+    b.style.borderLeft="8px solid "+meta.color;
+    b.disabled=S.locked;
+    b.addEventListener("click",()=>fight(cat),{once:true});
+
+    const sc=document.createElement("span");
+    sc.className="score";
+    sc.textContent=S.mode==="blind"?"?":c.scores[cat];
+    sc.title=S.mode==="blind"?"Score masqué en mode aveugle":"";
+
+    row.append(b,sc);
+    $("stats").append(row);
+  });
+
+  $("players").innerHTML="";
+  S.hands.forEach((h,i)=>{
+    const x=document.createElement("span");
+    x.className="badge";
+    x.textContent=`J${i+1} · ${h.length} carte${h.length>1?"s":""}${i===S.leader?" · LEADER":""}`;
+    $("players").append(x);
+  });
+
+  $("table").innerHTML="";
+  S.hands.forEach((h,i)=>{
+    const d=document.createElement("div");
+    d.className="seat";
+    d.innerHTML=`<div class="row"><strong>Joueur ${i+1}</strong><span>${h.length} cartes</span></div>
+      <div class="muted">${h.length?(i===S.leader?"Carte visible : "+h[0].name:"Carte cachée"):"Éliminé"}</div>`;
+    $("table").append(d);
+  });
+
+  $("result").classList.add("hidden");
+  $("nextBtn").classList.add("hidden");
+}
+
+function fight(cat){
+  if(S.locked) return;
+  S.locked=true;
+
+  const contenders=alive().map(i=>({
+    i,
+    card:S.hands[i][0],
+    v:S.hands[i][0].scores[cat]
+  }));
+
+  const max=Math.max(...contenders.map(x=>x.v));
+  const winners=contenders.filter(x=>x.v===max);
+
+  $("table").innerHTML="";
+  contenders.forEach(x=>{
+    const d=document.createElement("div");
+    d.className="seat"+(x.v===max?" winner":"");
+    d.innerHTML=`<div class="row"><strong>J${x.i+1} · ${x.card.name}</strong><span class="score">${x.v}</span></div>
+      <div class="muted">${cat}</div>`;
+    $("table").append(d);
+  });
+
+  const played=contenders.map(x=>S.hands[x.i].shift());
+  const result=$("result");
+  result.classList.remove("hidden");
+
+  if(winners.length>1){
+    S.pot.push(...played);
+    result.innerHTML=`<strong>ÉGALITÉ — CAGNOTTE</strong><br>${winners.map(x=>"J"+(x.i+1)).join(" / ")} : ${max}. Les ${played.length} cartes rejoignent la cagnotte.`;
+  }else{
+    const w=winners[0].i;
+    const prize=[...S.pot,...played];
+    S.pot=[];
+    S.hands[w].push(...prize);
+    S.leader=w;
+    result.innerHTML=`<strong>J${w+1} gagne la manche</strong><br>${winners[0].card.name} remporte « ${cat} » avec ${max}.`;
+  }
+
+  $("potCount").textContent=S.pot.length;
+  $("nextBtn").classList.remove("hidden");
+
+  // Sur mobile, on montre immédiatement le résultat et le bouton suivant.
+  setTimeout(()=>{
+    $("result").scrollIntoView({behavior:"smooth",block:"center"});
+  },50);
+}
+
+function next(){
+  if(!S.locked) return;
+  S.round++;
+  S.locked=false;
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function restart(){
+  S={n:2,hands:[],leader:0,round:1,pot:[],locked:false};
+  $("game").classList.add("hidden");
+  $("setup").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function end(w){
+  $("stats").innerHTML="";
+  $("result").classList.remove("hidden");
+  $("result").innerHTML=`<strong>Joueur ${w+1} remporte la partie.</strong><br>Il contrôle les 39 cartes.`;
+  $("nextBtn").classList.add("hidden");
+}
+
+$("startBtn").addEventListener("click",start);
+$("nextBtn").addEventListener("click",next);
+$("restartBtn").addEventListener("click",restart);
+load();
+</script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+</script>
+</body>
+</html>

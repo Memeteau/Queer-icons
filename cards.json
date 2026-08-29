@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "panama-al-brown",
+    "name": "Panama Al Brown",
+    "modifier": "WOKE",
+    "image": "panama-al-brown.jpeg",
+    "scores": {
+      "Courage": 78,
+      "Martyrologie": 75,
+      "Miracle": 100,
+      "Drag potential": 85,
+      "Empreinte culturelle": 90,
+      "Extravagance sexuelle": 34,
+      "Coming out": 35,
+      "Fait avancer la cause": 67,
+      "Flamboyance des tenues": 80
+    },
+    "comments": {
+      "Courage": "Come-back malgré les addictions",
+      "Martyrologie": "Racisme, homophobie, maladies",
+      "Miracle": "Champion prodige et danseur",
+      "Drag potential": "Libellule en gants de boxe",
+      "Empreinte culturelle": "Cocteau, BD et archives",
+      "Extravagance sexuelle": "Vie sexuelle peu documentée",
+      "Coming out": "Relation avec Cocteau discrète",
+      "Fait avancer la cause": "Figure contre le racisme",
+      "Flamboyance des tenues": "Dandy gracile du ring"
+    }
+  },
+  {
+    "id": "simone-de-beauvoir",
+    "name": "Simone de Beauvoir",
+    "modifier": "WOKE",
+    "image": "simone-de-beauvoir.jpeg",
+    "scores": {
+      "Courage": 30,
+      "Martyrologie": 45,
+      "Miracle": 15,
+      "Drag potential": 30,
+      "Empreinte culturelle": 100,
+      "Extravagance sexuelle": 65,
+      "Coming out": 20,
+      "Fait avancer la cause": 95,
+      "Flamboyance des tenues": 45
+    },
+    "comments": {
+      "Courage": "Affronte scandales et polémiques",
+      "Martyrologie": "Attaques publiques et ruptures",
+      "Miracle": "Encouragée très tôt à penser",
+      "Drag potential": "Butch intellectuelle au chignon",
+      "Empreinte culturelle": "Le Deuxième Sexe, monument mondial",
+      "Extravagance sexuelle": "Amours multiples et controversées",
+      "Coming out": "Amours féminines longtemps discrètes",
+      "Fait avancer la cause": "Refuse l’essentialisme sexuel",
+      "Flamboyance des tenues": "Chignon et tailleurs sobres"
+    }
+  },
+  {
+    "id": "roland-barthes",
+    "name": "Roland Barthes",
+    "modifier": "WOKE",
+    "image": "roland-barthes.jpeg",
+    "scores": {
+      "Courage": 15,
+      "Martyrologie": 33,
+      "Miracle": 10,
+      "Drag potential": 7,
+      "Empreinte culturelle": 24,
+      "Extravagance sexuelle": 15,
+      "Coming out": 50,
+      "Fait avancer la cause": 15,
+      "Flamboyance des tenues": 20
+    },
+    "comments": {
+      "Courage": "Placard tardivement entrouvert",
+      "Martyrologie": "Sanatorium pendant sa jeunesse",
+      "Miracle": "Bourgeoisie intellectuelle favorisée",
+      "Drag potential": "Col roulé, lunettes, détachement",
+      "Empreinte culturelle": "Mythologies partout, cinéma presque absent",
+      "Extravagance sexuelle": "Discret et malheureux en amour",
+      "Coming out": "Parle gay sans militantisme",
+      "Fait avancer la cause": "La cause l’intéresse peu",
+      "Flamboyance des tenues": "Costumes élégants mais sages"
+    }
+  },
+  {
+    "id": "jean-moulin",
+    "name": "Jean Moulin",
+    "modifier": "WOKE",
+    "image": "jean-moulin.jpeg",
+    "scores": {
+      "Courage": 91,
+      "Martyrologie": 96,
+      "Miracle": 14,
+      "Drag potential": 5,
+      "Empreinte culturelle": 76,
+      "Extravagance sexuelle": 60,
+      "Coming out": 5,
+      "Fait avancer la cause": 0,
+      "Flamboyance des tenues": 4
+    },
+    "comments": {
+      "Courage": "Résistant jusqu’à la torture",
+      "Martyrologie": "Torturé par la Gestapo",
+      "Miracle": "Ascension résistante exceptionnelle",
+      "Drag potential": "Chapeau, foulard, mystère",
+      "Empreinte culturelle": "Super-résistant devenu mythe",
+      "Extravagance sexuelle": "Sexualité tenue sous silence",
+      "Coming out": "Secret jusque dans Londres",
+      "Fait avancer la cause": "Aucun militantisme homosexuel",
+      "Flamboyance des tenues": "Dandy sous l’uniforme"
+    }
+  },
+  {
+    "id": "marie-antoinette",
+    "name": "Marie-Antoinette",
+    "modifier": "CONSERVATIVE",
+    "image": "marie-antoinette.jpeg",
+    "scores": {
+      "Courage": 15,
+      "Martyrologie": 76,
+      "Miracle": 1,
+      "Drag potential": 95,
+      "Empreinte culturelle": 80,
+      "Extravagance sexuelle": 50,
+      "Coming out": 0,
+      "Fait avancer la cause": 0,
+      "Flamboyance des tenues": 100
+    },
+    "comments": {
+      "Courage": "Fuite ratée à Varennes",
+      "Martyrologie": "Guillotinée et sexualité diffamée",
+      "Miracle": "Princesse devenue reine",
+      "Drag potential": "Drag royale instantanée",
+      "Empreinte culturelle": "Films, pop, mangas, mode",
+      "Extravagance sexuelle": "Rumeurs et amours attribuées",
+      "Coming out": "Tout demeure clandestin",
+      "Fait avancer la cause": "Aucune cause queer revendiquée",
+      "Flamboyance des tenues": "Garde-robe absolument maximaliste"
+    }
+  },
+  {
+    "id": "jeanne-darc",
+    "name": "Jeanne d’Arc",
+    "modifier": "WOKE",
+    "image": "jeanne-darc.jpeg",
+    "scores": {
+      "Courage": 100,
+      "Martyrologie": 100,
+      "Miracle": 89,
+      "Drag potential": 95,
+      "Empreinte culturelle": 85,
+      "Extravagance sexuelle": 0,
+      "Coming out": 50,
+      "Fait avancer la cause": 15,
+      "Flamboyance des tenues": 70
+    },
+    "comments": {
+      "Courage": "Armure, guerre, bûcher",
+      "Martyrologie": "Bûcher et procès exemplaires",
+      "Miracle": "Épopée quasi surnaturelle",
+      "Drag potential": "Armure et coupe au bol",
+      "Empreinte culturelle": "Cinéma, chansons, mythologie",
+      "Extravagance sexuelle": "Asexualité revendiquée par l’image",
+      "Coming out": "Habits masculins publiquement assumés",
+      "Fait avancer la cause": "Brèche symbolique plus que politique",
+      "Flamboyance des tenues": "Armure oui, village sobre"
+    }
+  },
+  {
+    "id": "chevalier-deon",
+    "name": "Chevalier d’Éon",
+    "modifier": "CONSERVATIVE",
+    "image": "chevalier-deon.jpeg",
+    "scores": {
+      "Courage": 25,
+      "Martyrologie": 12,
+      "Miracle": 6,
+      "Drag potential": 78,
+      "Empreinte culturelle": 62,
+      "Extravagance sexuelle": 7,
+      "Coming out": 34,
+      "Fait avancer la cause": 4,
+      "Flamboyance des tenues": 100
+    },
+    "comments": {
+      "Courage": "Espion, soldat, opportuniste",
+      "Martyrologie": "Fin pauvre mais très mondaine",
+      "Miracle": "Vie publique hors normes",
+      "Drag potential": "Maître du travestissement d’époque",
+      "Empreinte culturelle": "Films, anime, Lady Oscar",
+      "Extravagance sexuelle": "Mystère plutôt que débauche",
+      "Coming out": "Ambiguïté revendiquée toute sa vie",
+      "Fait avancer la cause": "Trop occupé par Versailles",
+      "Flamboyance des tenues": "Uniforme, robes et paniers"
+    }
+  },
+  {
+    "id": "philippe-ier-dorleans",
+    "name": "Philippe Ier d’Orléans",
+    "modifier": "CONSERVATIVE",
+    "image": "philippe-ier-dorleans.jpeg",
+    "scores": {
+      "Courage": 10,
+      "Martyrologie": 1,
+      "Miracle": 1,
+      "Drag potential": 15,
+      "Empreinte culturelle": 52,
+      "Extravagance sexuelle": 78,
+      "Coming out": 89,
+      "Fait avancer la cause": 35,
+      "Flamboyance des tenues": 67
+    },
+    "comments": {
+      "Courage": "Libertin sans véritable risque",
+      "Martyrologie": "Vie de plaisir presque intacte",
+      "Miracle": "Frère du Roi-Soleil",
+      "Drag potential": "Bijoux, talons, parfums",
+      "Empreinte culturelle": "Folle de Versailles récurrente",
+      "Extravagance sexuelle": "Cour entière comme terrain de jeu",
+      "Coming out": "Préférences notoirement publiques",
+      "Fait avancer la cause": "Protège des artistes libres",
+      "Flamboyance des tenues": "Toujours paré comme une femme"
+    }
+  },
+  {
+    "id": "verlaine",
+    "name": "Verlaine",
+    "modifier": "CONSERVATIVE",
+    "image": "verlaine.jpeg",
+    "scores": {
+      "Courage": 50,
+      "Martyrologie": 89,
+      "Miracle": 23,
+      "Drag potential": 23,
+      "Empreinte culturelle": 45,
+      "Extravagance sexuelle": 65,
+      "Coming out": 43,
+      "Fait avancer la cause": 11,
+      "Flamboyance des tenues": 23
+    },
+    "comments": {
+      "Courage": "Vie de bohème et bagarres",
+      "Martyrologie": "Prison, misère, alcool",
+      "Miracle": "Poète maudit devenu canonique",
+      "Drag potential": "Poète ivre en robe noire",
+      "Empreinte culturelle": "Rimbaud, poésie et cinéma",
+      "Extravagance sexuelle": "Passions violentes et scandaleuses",
+      "Coming out": "Rimbaud rend tout assez public",
+      "Fait avancer la cause": "Aucune politique très suivie",
+      "Flamboyance des tenues": "Silhouette sombre et négligée"
+    }
+  },
+  {
+    "id": "la-boetie",
+    "name": "La Boétie",
+    "modifier": "WOKE",
+    "image": "la-boetie.jpeg",
+    "scores": {
+      "Courage": 14,
+      "Martyrologie": 32,
+      "Miracle": 5,
+      "Drag potential": 2,
+      "Empreinte culturelle": 67,
+      "Extravagance sexuelle": 20,
+      "Coming out": 35,
+      "Fait avancer la cause": 85,
+      "Flamboyance des tenues": 6
+    },
+    "comments": {
+      "Courage": "Liberté pensée très jeune",
+      "Martyrologie": "Mort prématurée à trente-deux ans",
+      "Miracle": "Discours devenu classique",
+      "Drag potential": "Drag austère de magistrat",
+      "Empreinte culturelle": "Servitude volontaire toujours citée",
+      "Extravagance sexuelle": "Aucune extravagance attestée",
+      "Coming out": "Relation Montaigne très interprétée",
+      "Fait avancer la cause": "Texte fondateur de l’insoumission",
+      "Flamboyance des tenues": "Tenues de magistrat austères"
+    }
+  },
+  {
+    "id": "henri-iii",
+    "name": "Henri III",
+    "modifier": "CONSERVATIVE",
+    "image": "henri-iii.jpeg",
+    "scores": {
+      "Courage": 39,
+      "Martyrologie": 45,
+      "Miracle": 23,
+      "Drag potential": 72,
+      "Empreinte culturelle": 40,
+      "Extravagance sexuelle": 70,
+      "Coming out": 50,
+      "Fait avancer la cause": 20,
+      "Flamboyance des tenues": 82
+    },
+    "comments": {
+      "Courage": "Préfère cabinet aux batailles",
+      "Martyrologie": "Syphilis, calomnies, assassinat",
+      "Miracle": "Trois couronnes puis assassinat",
+      "Drag potential": "Perle, fraise et culotte bouffante",
+      "Empreinte culturelle": "Roi-mignon du cinéma historique",
+      "Extravagance sexuelle": "Conquêtes et rumeurs bisexuelles",
+      "Coming out": "Le plus gay des bisexuels",
+      "Fait avancer la cause": "Cause officielle des demon twinks",
+      "Flamboyance des tenues": "Perles et tenues provocatrices"
+    }
+  },
+  {
+    "id": "george-sand",
+    "name": "George Sand",
+    "modifier": "WOKE",
+    "image": "george-sand.jpeg",
+    "scores": {
+      "Courage": 55,
+      "Martyrologie": 20,
+      "Miracle": 23,
+      "Drag potential": 35,
+      "Empreinte culturelle": 93,
+      "Extravagance sexuelle": 30,
+      "Coming out": 45,
+      "Fait avancer la cause": 65,
+      "Flamboyance des tenues": 49
+    },
+    "comments": {
+      "Courage": "Vit librement de sa plume",
+      "Martyrologie": "Affronte misogynie et Baudelaire",
+      "Miracle": "Noblesse puis indépendance littéraire",
+      "Drag potential": "Premier drag king romantique",
+      "Empreinte culturelle": "Autrice devenue personnage culturel",
+      "Extravagance sexuelle": "Amours nombreuses mais choisies",
+      "Coming out": "Masculin vestimentaire très public",
+      "Fait avancer la cause": "Indépendance féminine en pratique",
+      "Flamboyance des tenues": "Habit masculin, élégance sobre"
+    }
+  },
+  {
+    "id": "francois-villon",
+    "name": "François Villon",
+    "modifier": "WOKE",
+    "image": "francois-villon.jpeg",
+    "scores": {
+      "Courage": 67,
+      "Martyrologie": 76,
+      "Miracle": 82,
+      "Drag potential": 45,
+      "Empreinte culturelle": 67,
+      "Extravagance sexuelle": 45,
+      "Coming out": 45,
+      "Fait avancer la cause": 35,
+      "Flamboyance des tenues": 14
+    },
+    "comments": {
+      "Courage": "Bohème, bagarres et fuite",
+      "Martyrologie": "Condamnations et disparition mystérieuse",
+      "Miracle": "Poésie miraculeusement survivante",
+      "Drag potential": "Punk médiéval en drag",
+      "Empreinte culturelle": "Argot, Rabelais, légende noire",
+      "Extravagance sexuelle": "Ballades très crûment sexuelles",
+      "Coming out": "Aucun placard très convaincant",
+      "Fait avancer la cause": "Ancêtre spirituel des gays punks",
+      "Flamboyance des tenues": "Très peu de tenue officielle"
+    }
+  },
+  {
+    "id": "jenny-salvette-de-lange",
+    "name": "Jenny Salvette de Lange",
+    "modifier": "CONSERVATIVE",
+    "image": "jenny-salvette-de-lange.jpeg",
+    "scores": {
+      "Courage": 54,
+      "Martyrologie": 12,
+      "Miracle": 45,
+      "Drag potential": 67,
+      "Empreinte culturelle": 12,
+      "Extravagance sexuelle": 0,
+      "Coming out": 1,
+      "Fait avancer la cause": 20,
+      "Flamboyance des tenues": 12
+    },
+    "comments": {
+      "Courage": "Travesti pendant soixante-quinze ans",
+      "Martyrologie": "Victime inventée, fortune réelle",
+      "Miracle": "Biographie entièrement bricolée",
+      "Drag potential": "Crafty drag avant l’heure",
+      "Empreinte culturelle": "Presque oubliée de l’histoire",
+      "Extravagance sexuelle": "Sexualité pratiquement inconnue",
+      "Coming out": "Aucun coming out public",
+      "Fait avancer la cause": "Survivre plutôt que militer",
+      "Flamboyance des tenues": "Discrétion vestimentaire obligatoire"
+    }
+  },
+  {
+    "id": "marquis-de-sade",
+    "name": "Marquis de Sade",
+    "modifier": "CONSERVATIVE",
+    "image": "marquis-de-sade.jpeg",
+    "scores": {
+      "Courage": 2,
+      "Martyrologie": 80,
+      "Miracle": 12,
+      "Drag potential": 14,
+      "Empreinte culturelle": 97,
+      "Extravagance sexuelle": 100,
+      "Coming out": 93,
+      "Fait avancer la cause": 25,
+      "Flamboyance des tenues": 67
+    },
+    "comments": {
+      "Courage": "Privilèges plutôt que bravoure",
+      "Martyrologie": "Prison, censure et Charenton",
+      "Miracle": "Survit à plusieurs régimes",
+      "Drag potential": "Peu de drag, beaucoup d’ego",
+      "Empreinte culturelle": "Psychés, philosophes et adaptations",
+      "Extravagance sexuelle": "À la Bastille : gode × 6600",
+      "Coming out": "Bisexualité sans ambiguïté",
+      "Fait avancer la cause": "Radicalité sexuelle très solitaire",
+      "Flamboyance des tenues": "Gentilhomme XVIIIe plutôt voyant"
+    }
+  },
+  {
+    "id": "mlle-de-maupin",
+    "name": "Mlle de Maupin",
+    "modifier": "WOKE",
+    "image": "mlle-de-maupin.jpeg",
+    "scores": {
+      "Courage": 96,
+      "Martyrologie": 45,
+      "Miracle": 75,
+      "Drag potential": 76,
+      "Empreinte culturelle": 90,
+      "Extravagance sexuelle": 67,
+      "Coming out": 60,
+      "Fait avancer la cause": 35,
+      "Flamboyance des tenues": 66
+    },
+    "comments": {
+      "Courage": "Duels, couvent incendié, fuite",
+      "Martyrologie": "Meurt jeune au couvent",
+      "Miracle": "Éduquée comme un garçon",
+      "Drag potential": "Une épée suffit presque",
+      "Empreinte culturelle": "Gautier puis plusieurs adaptations",
+      "Extravagance sexuelle": "Bisexuelle et amoureuse combative",
+      "Coming out": "Vie publique sans grande dissimulation",
+      "Fait avancer la cause": "Libre surtout pour elle-même",
+      "Flamboyance des tenues": "Entre habits masculins et féminins"
+    }
+  },
+  {
+    "id": "reine-margot",
+    "name": "Reine Margot",
+    "modifier": "CONSERVATIVE",
+    "image": "reine-margot.jpeg",
+    "scores": {
+      "Courage": 40,
+      "Martyrologie": 75,
+      "Miracle": 23,
+      "Drag potential": 67,
+      "Empreinte culturelle": 89,
+      "Extravagance sexuelle": 50,
+      "Coming out": 40,
+      "Fait avancer la cause": 14,
+      "Flamboyance des tenues": 43
+    },
+    "comments": {
+      "Courage": "Survit aux Valois et massacres",
+      "Martyrologie": "Amant assassiné sous ses yeux",
+      "Miracle": "Princesse savante devenue légende",
+      "Drag potential": "Adjani fournit déjà le drag",
+      "Empreinte culturelle": "Dumas puis Adjani l’immortalisent",
+      "Extravagance sexuelle": "Jeunes amants et rumeurs familiales",
+      "Coming out": "Tout le royaume savait",
+      "Fait avancer la cause": "Très peu de politique queer",
+      "Flamboyance des tenues": "Chignons et luxe Renaissance"
+    }
+  },
+  {
+    "id": "guy-hocquenghem",
+    "name": "Guy Hocquenghem",
+    "modifier": "WOKE",
+    "image": "guy-hocquenghem.jpeg",
+    "scores": {
+      "Courage": 50,
+      "Martyrologie": 59,
+      "Miracle": 4,
+      "Drag potential": 5,
+      "Empreinte culturelle": 35,
+      "Extravagance sexuelle": 45,
+      "Coming out": 93,
+      "Fait avancer la cause": 90,
+      "Flamboyance des tenues": 8
+    },
+    "comments": {
+      "Courage": "Se met tout le monde à dos",
+      "Martyrologie": "Meurt du sida",
+      "Miracle": "Normalien fils d’agrégé",
+      "Drag potential": "Drag minimal, discours maximal",
+      "Empreinte culturelle": "Race d’Ep et French theory",
+      "Extravagance sexuelle": "Fantasmes de soumission racialisés",
+      "Coming out": "Abandonne tout pour le FHAR",
+      "Fait avancer la cause": "Le FHAR, évidemment",
+      "Flamboyance des tenues": "Look militant très peu flamboyant"
+    }
+  },
+  {
+    "id": "charles-trenet",
+    "name": "Charles Trenet",
+    "modifier": "CONSERVATIVE",
+    "image": "charles-trenet.jpeg",
+    "scores": {
+      "Courage": 12,
+      "Martyrologie": 2,
+      "Miracle": 6,
+      "Drag potential": 87,
+      "Empreinte culturelle": 78,
+      "Extravagance sexuelle": 46,
+      "Coming out": 12,
+      "Fait avancer la cause": 5,
+      "Flamboyance des tenues": 45
+    },
+    "comments": {
+      "Courage": "Prudence publique toute sa vie",
+      "Martyrologie": "Peu de martyrisation personnelle",
+      "Miracle": "Carrière populaire exceptionnellement longue",
+      "Drag potential": "Fantaisie de scène naturelle",
+      "Empreinte culturelle": "Chansons devenues patrimoine national",
+      "Extravagance sexuelle": "Vie privée surveillée et rumeurs",
+      "Coming out": "Placard soigneusement maintenu",
+      "Fait avancer la cause": "Cause queer presque absente",
+      "Flamboyance des tenues": "Costumes de chanteur fantaisiste"
+    }
+  },
+  {
+    "id": "jean-diot-et-bruno-lenoir",
+    "name": "Jean Diot & Bruno Lenoir",
+    "modifier": "WOKE",
+    "image": "jean-diot-et-bruno-lenoir.jpeg",
+    "scores": {
+      "Courage": 48,
+      "Martyrologie": 100,
+      "Miracle": 87,
+      "Drag potential": 12,
+      "Empreinte culturelle": 58,
+      "Extravagance sexuelle": 23,
+      "Coming out": 5,
+      "Fait avancer la cause": 88,
+      "Flamboyance des tenues": 7
+    },
+    "comments": {
+      "Courage": "Affrontent une justice implacable",
+      "Martyrologie": "Brûlés pour homosexualité",
+      "Miracle": "Mémoire ressuscitée des archives",
+      "Drag potential": "Peu de drag imaginable",
+      "Empreinte culturelle": "Plaque, mémoire et commémorations",
+      "Extravagance sexuelle": "Désir devenu pièce à conviction",
+      "Coming out": "Aucun espace pour se dire",
+      "Fait avancer la cause": "Martyrs devenus symbole politique",
+      "Flamboyance des tenues": "Tenues populaires du XVIIIe"
+    }
+  },
+  {
+    "id": "les-femmes-pantheres",
+    "name": "Les Femmes Panthères",
+    "modifier": "WOKE",
+    "image": "les-femmes-pantheres.jpeg",
+    "scores": {
+      "Courage": 61,
+      "Martyrologie": 18,
+      "Miracle": 94,
+      "Drag potential": 100,
+      "Empreinte culturelle": 62,
+      "Extravagance sexuelle": 25,
+      "Coming out": 76,
+      "Fait avancer la cause": 72,
+      "Flamboyance des tenues": 100
+    },
+    "comments": {
+      "Courage": "Militantes et performeuses offensives",
+      "Martyrologie": "Répression moins que provocation",
+      "Miracle": "Collectif spectaculaire et improbable",
+      "Drag potential": "Drag collectif à plein régime",
+      "Empreinte culturelle": "Performance, photo, mémoire militante",
+      "Extravagance sexuelle": "Sexualité comme arme scénique",
+      "Coming out": "Visibilité revendiquée frontalement",
+      "Fait avancer la cause": "Militantisme au cœur du projet",
+      "Flamboyance des tenues": "Costumes félins totalement maximalistes"
+    }
+  },
+  {
+    "id": "marcel-proust",
+    "name": "Marcel Proust",
+    "modifier": "WOKE",
+    "image": "marcel-proust.jpeg",
+    "scores": {
+      "Courage": 18,
+      "Martyrologie": 72,
+      "Miracle": 1,
+      "Drag potential": 32,
+      "Empreinte culturelle": 96,
+      "Extravagance sexuelle": 60,
+      "Coming out": 8,
+      "Fait avancer la cause": 56,
+      "Flamboyance des tenues": 67
+    },
+    "comments": {
+      "Courage": "Courage social plutôt que physique",
+      "Martyrologie": "Asthme, deuils et enfermement",
+      "Miracle": "Œuvre géante depuis une chambre",
+      "Drag potential": "Dandy malade très transformable",
+      "Empreinte culturelle": "Une œuvre-monde partout adaptée",
+      "Extravagance sexuelle": "Désirs masculins transposés en femmes",
+      "Coming out": "Placard littéraire méthodique",
+      "Fait avancer la cause": "Queer par l’œuvre, pas militant",
+      "Flamboyance des tenues": "Dandy mondain puis robe de chambre"
+    }
+  },
+  {
+    "id": "robert-de-montesquiou",
+    "name": "Robert de Montesquiou",
+    "modifier": "WOKE",
+    "image": "robert-de-montesquiou.jpeg",
+    "scores": {
+      "Courage": 10,
+      "Martyrologie": 25,
+      "Miracle": 2,
+      "Drag potential": 87,
+      "Empreinte culturelle": 35,
+      "Extravagance sexuelle": 78,
+      "Coming out": 92,
+      "Fait avancer la cause": 43,
+      "Flamboyance des tenues": 94
+    },
+    "comments": {
+      "Courage": "Bravoure surtout mondaine",
+      "Martyrologie": "Décadence plus que persécution",
+      "Miracle": "Aristocrate esthète très favorisé",
+      "Drag potential": "Des Esseintes grandeur nature",
+      "Empreinte culturelle": "Modèle de Proust et Huysmans",
+      "Extravagance sexuelle": "Dandysme et désirs très visibles",
+      "Coming out": "Ambiguïté à peine dissimulée",
+      "Fait avancer la cause": "Réseau queer avant la lettre",
+      "Flamboyance des tenues": "Canne, capes et poses théâtrales"
+    }
+  },
+  {
+    "id": "coccinelle",
+    "name": "Coccinelle",
+    "modifier": "WOKE",
+    "image": "coccinelle.jpeg",
+    "scores": {
+      "Courage": 86,
+      "Martyrologie": 48,
+      "Miracle": 82,
+      "Drag potential": 100,
+      "Empreinte culturelle": 76,
+      "Extravagance sexuelle": 58,
+      "Coming out": 100,
+      "Fait avancer la cause": 98,
+      "Flamboyance des tenues": 100
+    },
+    "comments": {
+      "Courage": "Transition publique et scène hostile",
+      "Martyrologie": "Transphobie malgré le triomphe",
+      "Miracle": "Star trans devenue phénomène",
+      "Drag potential": "Drag potential déjà accompli",
+      "Empreinte culturelle": "Music-hall et mémoire trans",
+      "Extravagance sexuelle": "Vie amoureuse très médiatisée",
+      "Coming out": "Visibilité trans absolue",
+      "Fait avancer la cause": "Ouvre la voie publiquement",
+      "Flamboyance des tenues": "Robes de scène spectaculaires"
+    }
+  },
+  {
+    "id": "jean-genet",
+    "name": "Jean Genet",
+    "modifier": "WOKE",
+    "image": "jean-genet.jpeg",
+    "scores": {
+      "Courage": 65,
+      "Martyrologie": 61,
+      "Miracle": 100,
+      "Drag potential": 5,
+      "Empreinte culturelle": 91,
+      "Extravagance sexuelle": 92,
+      "Coming out": 100,
+      "Fait avancer la cause": 98,
+      "Flamboyance des tenues": 13
+    },
+    "comments": {
+      "Courage": "Prisonnier devenu écrivain insurgé",
+      "Martyrologie": "Abandon, prison et marginalité",
+      "Miracle": "De voleur à monument littéraire",
+      "Drag potential": "Anti-drag volontairement viril",
+      "Empreinte culturelle": "Théâtre, cinéma, littérature mondiale",
+      "Extravagance sexuelle": "Désir homosexuel omniprésent",
+      "Coming out": "Aucun placard, jamais",
+      "Fait avancer la cause": "Palestiniens, Black Panthers, gays",
+      "Flamboyance des tenues": "Tenues volontairement austères"
+    }
+  },
+  {
+    "id": "rimbaud",
+    "name": "Rimbaud",
+    "modifier": "WOKE",
+    "image": "rimbaud.jpeg",
+    "scores": {
+      "Courage": 30,
+      "Martyrologie": 34,
+      "Miracle": 89,
+      "Drag potential": 39,
+      "Empreinte culturelle": 94,
+      "Extravagance sexuelle": 89,
+      "Coming out": 79,
+      "Fait avancer la cause": 80,
+      "Flamboyance des tenues": 23
+    },
+    "comments": {
+      "Courage": "Fugue, Commune, Afrique",
+      "Martyrologie": "Vie brisée très jeune",
+      "Miracle": "Génie adolescent quasi miraculeux",
+      "Drag potential": "Adolescent androgyne et insolent",
+      "Empreinte culturelle": "Poète devenu mythe mondial",
+      "Extravagance sexuelle": "Verlaine, violence et scandale",
+      "Coming out": "Relation impossible à cacher",
+      "Fait avancer la cause": "Icône queer par postérité",
+      "Flamboyance des tenues": "Look adolescent presque uniforme"
+    }
+  },
+  {
+    "id": "violette-morris",
+    "name": "Violette Morris",
+    "modifier": "CONSERVATIVE",
+    "image": "violette-morris.jpeg",
+    "scores": {
+      "Courage": 60,
+      "Martyrologie": 70,
+      "Miracle": 34,
+      "Drag potential": 99,
+      "Empreinte culturelle": 21,
+      "Extravagance sexuelle": 80,
+      "Coming out": 100,
+      "Fait avancer la cause": 61,
+      "Flamboyance des tenues": 76
+    },
+    "comments": {
+      "Courage": "Sportive, pilote, conductrice",
+      "Martyrologie": "Exclusion sportive puis mort violente",
+      "Miracle": "Championne dans plusieurs disciplines",
+      "Drag potential": "Menswear poussé jusqu’au bout",
+      "Empreinte culturelle": "Figure sulfureuse peu célébrée",
+      "Extravagance sexuelle": "Sexualité lesbienne très visible",
+      "Coming out": "Aucun effort de dissimulation",
+      "Fait avancer la cause": "Émancipation puis compromission politique",
+      "Flamboyance des tenues": "Costumes masculins très affirmés"
+    }
+  },
+  {
+    "id": "herculine-barbin",
+    "name": "Herculine Barbin",
+    "modifier": "WOKE",
+    "image": "herculine-barbin.jpeg",
+    "scores": {
+      "Courage": 75,
+      "Martyrologie": 99,
+      "Miracle": 34,
+      "Drag potential": 24,
+      "Empreinte culturelle": 54,
+      "Extravagance sexuelle": 32,
+      "Coming out": 61,
+      "Fait avancer la cause": 53,
+      "Flamboyance des tenues": 52
+    },
+    "comments": {
+      "Courage": "Vie sous injonction médicale",
+      "Martyrologie": "Isolement puis suicide",
+      "Miracle": "Existence devenue archive unique",
+      "Drag potential": "Ambiguïté corporelle non performée",
+      "Empreinte culturelle": "Mémoires édités par Foucault",
+      "Extravagance sexuelle": "Sexualité sous contrainte sociale",
+      "Coming out": "Identité imposée plutôt que choisie",
+      "Fait avancer la cause": "Postérité intersexe décisive",
+      "Flamboyance des tenues": "Tenues dictées par l’état civil"
+    }
+  },
+  {
+    "id": "jean-cocteau",
+    "name": "Jean Cocteau",
+    "modifier": "WOKE",
+    "image": "jean-cocteau.jpeg",
+    "scores": {
+      "Courage": 34,
+      "Martyrologie": 23,
+      "Miracle": 8,
+      "Drag potential": 43,
+      "Empreinte culturelle": 45,
+      "Extravagance sexuelle": 65,
+      "Coming out": 89,
+      "Fait avancer la cause": 89,
+      "Flamboyance des tenues": 65
+    },
+    "comments": {
+      "Courage": "Ambulancier, Genet, Arcadie",
+      "Martyrologie": "Suicides, deuils et Radiguet",
+      "Miracle": "Accès immédiat au Tout-Paris",
+      "Drag potential": "Profil d’aigle et yeux maquillés",
+      "Empreinte culturelle": "Films, dessins, fresques, tatouages",
+      "Extravagance sexuelle": "Radiguet, Marais, Brown, autres",
+      "Coming out": "Homosexualité éthérée mais assumée",
+      "Fait avancer la cause": "Genet, Arcadie, objection de conscience",
+      "Flamboyance des tenues": "Costumes, bagues et capes"
+    }
+  },
+  {
+    "id": "louise-michel",
+    "name": "Louise Michel",
+    "modifier": "WOKE",
+    "image": "louise-michel.jpeg",
+    "scores": {
+      "Courage": 100,
+      "Martyrologie": 96,
+      "Miracle": 91,
+      "Drag potential": 77,
+      "Empreinte culturelle": 83,
+      "Extravagance sexuelle": 12,
+      "Coming out": 20,
+      "Fait avancer la cause": 93,
+      "Flamboyance des tenues": 21
+    },
+    "comments": {
+      "Courage": "Commune, armes, procès, déportation",
+      "Martyrologie": "Prison, bagne, attentats",
+      "Miracle": "Retour du bagne en héroïne",
+      "Drag potential": "La Vierge Rouge en drag",
+      "Empreinte culturelle": "Figure révolutionnaire omniprésente",
+      "Extravagance sexuelle": "Vie affective volontairement secondaire",
+      "Coming out": "Pas une catégorie centrale ici",
+      "Fait avancer la cause": "Révolution et émancipation totales",
+      "Flamboyance des tenues": "Noir militant, rouge symbolique"
+    }
+  },
+  {
+    "id": "suzy-solidor",
+    "name": "Suzy Solidor",
+    "modifier": "CONSERVATIVE",
+    "image": "suzy-solidor.jpeg",
+    "scores": {
+      "Courage": 43,
+      "Martyrologie": 52,
+      "Miracle": 71,
+      "Drag potential": 84,
+      "Empreinte culturelle": 64,
+      "Extravagance sexuelle": 91,
+      "Coming out": 100,
+      "Fait avancer la cause": 60,
+      "Flamboyance des tenues": 97
+    },
+    "comments": {
+      "Courage": "Cabaret lesbien à ciel ouvert",
+      "Martyrologie": "Épuration puis carrière déplacée",
+      "Miracle": "De milieu modeste à vedette",
+      "Drag potential": "Garçonne immédiatement drag",
+      "Empreinte culturelle": "Portraiturée par plus de 200 artistes",
+      "Extravagance sexuelle": "Femmes revendiquées sans détour",
+      "Coming out": "Lesbienne publiquement assumée",
+      "Fait avancer la cause": "Visibilité avant militantisme",
+      "Flamboyance des tenues": "Garçonne, lamé et scène"
+    }
+  },
+  {
+    "id": "andre-gide",
+    "name": "André Gide",
+    "modifier": "WOKE",
+    "image": "andre-gide.jpeg",
+    "scores": {
+      "Courage": 25,
+      "Martyrologie": 23,
+      "Miracle": 5,
+      "Drag potential": 19,
+      "Empreinte culturelle": 55,
+      "Extravagance sexuelle": 51,
+      "Coming out": 75,
+      "Fait avancer la cause": 80,
+      "Flamboyance des tenues": 18
+    },
+    "comments": {
+      "Courage": "Publie Corydon malgré le scandale",
+      "Martyrologie": "Conflits religieux et intimes",
+      "Miracle": "Nobel et liberté littéraire",
+      "Drag potential": "Drag très peu naturel",
+      "Empreinte culturelle": "Corydon, cinéma, canon littéraire",
+      "Extravagance sexuelle": "Désirs masculins au cœur de l’œuvre",
+      "Coming out": "Corydon rend le placard impossible",
+      "Fait avancer la cause": "Normalise publiquement l’homosexualité",
+      "Flamboyance des tenues": "Costumes bourgeois très sages"
+    }
+  },
+  {
+    "id": "natalie-clifford-barney",
+    "name": "Natalie Clifford Barney",
+    "modifier": "WOKE",
+    "image": "natalie-clifford-barney.jpeg",
+    "scores": {
+      "Courage": 54,
+      "Martyrologie": 12,
+      "Miracle": 34,
+      "Drag potential": 58,
+      "Empreinte culturelle": 44,
+      "Extravagance sexuelle": 97,
+      "Coming out": 100,
+      "Fait avancer la cause": 45,
+      "Flamboyance des tenues": 78
+    },
+    "comments": {
+      "Courage": "Vit ouvertement lesbienne très tôt",
+      "Martyrologie": "Fortune protège des sanctions",
+      "Miracle": "Héritière avec liberté maximale",
+      "Drag potential": "Amazone mondaine très drag",
+      "Empreinte culturelle": "Salon littéraire queer historique",
+      "Extravagance sexuelle": "Conquêtes féminines innombrables",
+      "Coming out": "Lesbienne sans aucun placard",
+      "Fait avancer la cause": "Crée un réseau de femmes",
+      "Flamboyance des tenues": "Robes, poses et théâtralité"
+    }
+  },
+  {
+    "id": "claude-cahun",
+    "name": "Claude Cahun",
+    "modifier": "WOKE",
+    "image": "claude-cahun.jpeg",
+    "scores": {
+      "Courage": 77,
+      "Martyrologie": 68,
+      "Miracle": 5,
+      "Drag potential": 100,
+      "Empreinte culturelle": 23,
+      "Extravagance sexuelle": 47,
+      "Coming out": 89,
+      "Fait avancer la cause": 96,
+      "Flamboyance des tenues": 80
+    },
+    "comments": {
+      "Courage": "Résistance antinazie à Jersey",
+      "Martyrologie": "Condamnée à mort puis libérée",
+      "Miracle": "Œuvre ressuscitée tardivement",
+      "Drag potential": "Autoportraits genderfuck absolus",
+      "Empreinte culturelle": "Photographie devenue canon queer",
+      "Extravagance sexuelle": "Couple durable avec Marcel Moore",
+      "Coming out": "Identité de genre explicitement brouillée",
+      "Fait avancer la cause": "Résistance et brouillage des normes",
+      "Flamboyance des tenues": "Costumes comme laboratoire identitaire"
+    }
+  },
+  {
+    "id": "maurice-sachs",
+    "name": "Maurice Sachs",
+    "modifier": "CONSERVATIVE",
+    "image": "maurice-sachs.jpeg",
+    "scores": {
+      "Courage": 13,
+      "Martyrologie": 45,
+      "Miracle": 71,
+      "Drag potential": 59,
+      "Empreinte culturelle": 12,
+      "Extravagance sexuelle": 88,
+      "Coming out": 91,
+      "Fait avancer la cause": 1,
+      "Flamboyance des tenues": 87
+    },
+    "comments": {
+      "Courage": "Opportunisme plus que courage",
+      "Martyrologie": "Collaboration, fuite et mort obscure",
+      "Miracle": "Survit longtemps par combines",
+      "Drag potential": "Dandy immoral très drag-compatible",
+      "Empreinte culturelle": "Mémoires sulfureux mais niche",
+      "Extravagance sexuelle": "Aventures et scandales constants",
+      "Coming out": "Homosexualité notoirement publique",
+      "Fait avancer la cause": "Trahit presque toutes ses communautés",
+      "Flamboyance des tenues": "Dandy de l’entre-deux-guerres"
+    }
+  },
+  {
+    "id": "violette-leduc",
+    "name": "Violette Leduc",
+    "modifier": "WOKE",
+    "image": "violette-leduc.jpeg",
+    "scores": {
+      "Courage": 82,
+      "Martyrologie": 88,
+      "Miracle": 14,
+      "Drag potential": 44,
+      "Empreinte culturelle": 25,
+      "Extravagance sexuelle": 95,
+      "Coming out": 96,
+      "Fait avancer la cause": 72,
+      "Flamboyance des tenues": 28
+    },
+    "comments": {
+      "Courage": "Écrit frontalement le désir féminin",
+      "Martyrologie": "Rejets éditoriaux et solitude",
+      "Miracle": "Beauvoir soutient son œuvre",
+      "Drag potential": "Androgynie littéraire plutôt que drag",
+      "Empreinte culturelle": "La Bâtarde et Thérèse et Isabelle",
+      "Extravagance sexuelle": "Sexualité lesbienne sans filtre",
+      "Coming out": "Écriture comme coming out permanent",
+      "Fait avancer la cause": "Rend le désir lesbien dicible",
+      "Flamboyance des tenues": "Sobriété d’écrivaine plus que scène"
+    }
+  },
+  {
+    "id": "marie-antoinette-lix",
+    "name": "Marie-Antoinette Lix",
+    "modifier": "CONSERVATIVE",
+    "image": "marie-antoinette-lix.jpeg",
+    "scores": {
+      "Courage": 100,
+      "Martyrologie": 78,
+      "Miracle": 94,
+      "Drag potential": 96,
+      "Empreinte culturelle": 52,
+      "Extravagance sexuelle": 5,
+      "Coming out": 72,
+      "Fait avancer la cause": 84,
+      "Flamboyance des tenues": 28
+    },
+    "comments": {
+      "Courage": "Combat réellement les armes à la main",
+      "Martyrologie": "Guerre, blessures et oubli",
+      "Miracle": "Soldate devenue héroïne improbable",
+      "Drag potential": "Uniforme et identité masculine",
+      "Empreinte culturelle": "Figure historique redécouverte",
+      "Extravagance sexuelle": "Sexualité presque hors sujet",
+      "Coming out": "Vie de genre publiquement ambiguë",
+      "Fait avancer la cause": "Brèche par l’action militaire",
+      "Flamboyance des tenues": "Uniforme d’abord, peu de luxe"
+    }
+  },
+  {
+    "id": "abel-bonnard",
+    "name": "Abel Bonnard",
+    "modifier": "CONSERVATIVE",
+    "image": "abel-bonnard.jpeg",
+    "scores": {
+      "Courage": 3,
+      "Martyrologie": 41,
+      "Miracle": 30,
+      "Drag potential": 22,
+      "Empreinte culturelle": 28,
+      "Extravagance sexuelle": 20,
+      "Coming out": 24,
+      "Fait avancer la cause": 0,
+      "Flamboyance des tenues": 31
+    },
+    "comments": {
+      "Courage": "Collaboration sans héroïsme",
+      "Martyrologie": "Condamné, mais exil confortable",
+      "Miracle": "Longue vie malgré l’effondrement",
+      "Drag potential": "Ministre dandy très peu drag",
+      "Empreinte culturelle": "Surtout souvenir de collaboration",
+      "Extravagance sexuelle": "Vie privée plus dandy que scandale",
+      "Coming out": "Manières jamais vraiment cachées",
+      "Fait avancer la cause": "Cause des gays réactionnaires",
+      "Flamboyance des tenues": "Costard ministériel sans panache"
+    }
+  },
+  {
+    "id": "michel-foucault",
+    "name": "Michel Foucault",
+    "modifier": "WOKE",
+    "image": "michel-foucault.jpeg",
+    "scores": {
+      "Courage": 10,
+      "Martyrologie": 10,
+      "Miracle": 10,
+      "Drag potential": 40,
+      "Empreinte culturelle": 34,
+      "Extravagance sexuelle": 60,
+      "Coming out": 50,
+      "Fait avancer la cause": 76,
+      "Flamboyance des tenues": 67
+    },
+    "comments": {
+      "Courage": "Carrière brillante, risques limités",
+      "Martyrologie": "Dépression puis mort du sida",
+      "Miracle": "Fils de médecin bourgeois",
+      "Drag potential": "Un col roulé suffit",
+      "Empreinte culturelle": "Guibert, BD et icône théorique",
+      "Extravagance sexuelle": "BDSM à l’ancienne",
+      "Coming out": "Assumé dans le milieu parisien",
+      "Fait avancer la cause": "Interviews dans Gai Pied",
+      "Flamboyance des tenues": "Costumes cintrés et kimono"
+    }
+  }
+]
