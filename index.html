@@ -6,225 +6,42 @@
 <meta name="theme-color" content="#24122f">
 <title>Queer Icons — Top Trumps</title>
 <style>
-:root{
-  --bg:#0d0912;--panel:#21132a;--panel2:#2b1737;--purple:#7f43a2;
-  --gold:#f1cf54;--text:#fff;--muted:#c9bacf;--line:#614272;
-}
+:root{--bg:#0d0912;--panel:#21132a;--panel2:#2b1737;--purple:#7f43a2;--gold:#f1cf54;--text:#fff;--muted:#c9bacf;--line:#614272}
 *{box-sizing:border-box}
-body{
-  margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--text);
-  background:radial-gradient(circle at 50% 0,#3d1b4d 0,#211129 30%,#0d0912 72%);
-  min-height:100vh;
-}
-button,select{font:inherit}
-button{touch-action:manipulation}
-button:disabled{opacity:.55;cursor:default}
-.wrap{width:min(1100px,calc(100% - 24px));margin:auto;padding:24px 0 70px}
-h1{font-size:clamp(38px,8vw,72px);line-height:.9;margin:8px 0 16px;letter-spacing:-.04em}
-.subtitle{color:var(--muted);margin:0 0 22px}
-.panel{background:rgba(33,19,42,.94);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 24px 80px #0007}
-.hidden{display:none!important}
-.setup{display:grid;gap:14px;max-width:660px}
-label{font-weight:700}
-select{width:100%;padding:13px 14px;margin-top:6px;border-radius:15px;border:1px solid var(--line);background:#160e1d;color:#fff}
-button{border:0;border-radius:16px;padding:13px 16px;font-weight:800;cursor:pointer}
-.primary{background:var(--gold);color:#23132c}
-.secondary{background:#3b2447;color:#fff;border:1px solid var(--line)}
-.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
-.metric{background:#1a1021;border:1px solid #4c3458;border-radius:14px;padding:10px;text-align:center}
-.metric small{display:block;color:var(--muted)}
-.metric strong{font-size:20px}
-.players{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
-.badge{background:#392047;border:1px solid #624675;border-radius:999px;padding:7px 10px;font-size:13px}
-.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.78fr);gap:18px}
-.card{overflow:hidden;background:#f7f0df;color:#271b2c;border:3px solid var(--gold);border-radius:28px;box-shadow:0 18px 60px #0007}
-.portrait{background:#1a1021;display:flex;align-items:center;justify-content:center;min-height:260px;overflow:hidden}
-.portrait img{display:block;width:100%;height:auto;object-fit:contain;object-position:center center}
-.portrait .fallback{font-size:70px;font-weight:900;color:white;padding:90px 20px}
-.cardhead{padding:14px 16px 10px;background:#261531;color:#fff}
-.cardhead h2{margin:0;font-size:27px;line-height:1}
-.cardhead .mod{font-size:11px;letter-spacing:.13em;margin-top:6px;color:#e3d2ea}
-.stats{background:#f7f0df}
-.stat{display:grid;grid-template-columns:minmax(0,1fr) 62px;gap:10px;align-items:center;padding:0;border-top:1px solid #decfb8}
-.statbutton{width:100%;background:transparent;color:#271b2c;text-align:left;padding:10px 12px;border-radius:0;font-weight:800;display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:10px}
-.statText{display:flex;flex-direction:column;gap:2px;min-width:0}
-.statName{font-weight:900;line-height:1.05}
-.statComment{font-size:12px;font-weight:600;line-height:1.2;color:#4b3f46}
-.catIcon{width:28px;height:28px;display:inline-grid;place-items:center;border-radius:50%;background:#fff9;font-size:17px;flex:0 0 28px}
-.score{color:#fff;text-align:center;padding:6px 5px;border-radius:999px;font-weight:900;min-width:48px;margin-right:12px;box-shadow:inset 0 0 0 1px #ffffff55}
-.table{display:grid;gap:10px}
-.seat{background:#1a1021;border:1px solid #4c3458;border-radius:16px;padding:12px}
-.seat.winner{outline:2px solid var(--gold)}
-.seat .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.muted{color:var(--muted);font-size:13px}
-.result{margin-top:12px;padding:14px;border:1px solid #75558a;border-radius:16px;background:#2f193a}
-.next{width:100%;margin-top:10px;position:sticky;bottom:12px;z-index:10;box-shadow:0 10px 30px #0008}
-.error{padding:16px;border:1px solid #8b5070;border-radius:18px;background:#341526}
-@media(max-width:760px){
-  .grid{grid-template-columns:1fr}
-  .topbar{grid-template-columns:repeat(2,1fr)}
-  .wrap{width:min(100% - 16px,700px);padding-top:16px}
-  .portrait{min-height:220px;max-height:55vh}
-  .portrait img{max-height:55vh}
-}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 50% 0,#3d1b4d 0,#211129 30%,#0d0912 72%);min-height:100vh}
+button,select{font:inherit}button{touch-action:manipulation}button:disabled{opacity:.55;cursor:default}
+.wrap{width:min(1100px,calc(100% - 24px));margin:auto;padding:24px 0 70px}h1{font-size:clamp(38px,8vw,72px);line-height:.9;margin:8px 0 16px;letter-spacing:-.04em}.subtitle{color:var(--muted);margin:0 0 22px}.panel{background:rgba(33,19,42,.94);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 24px 80px #0007}.hidden{display:none!important}.setup{display:grid;gap:14px;max-width:660px}label{font-weight:700}select{width:100%;padding:13px 14px;margin-top:6px;border-radius:15px;border:1px solid var(--line);background:#160e1d;color:#fff}button{border:0;border-radius:16px;padding:13px 16px;font-weight:800;cursor:pointer}.primary{background:var(--gold);color:#23132c}.secondary{background:#3b2447;color:#fff;border:1px solid var(--line)}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}.metric{background:#1a1021;border:1px solid #4c3458;border-radius:14px;padding:10px;text-align:center}.metric small{display:block;color:var(--muted)}.metric strong{font-size:20px}.players{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}.badge{background:#392047;border:1px solid #624675;border-radius:999px;padding:7px 10px;font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.78fr);gap:18px}.card{overflow:hidden;background:#f7f0df;color:#271b2c;border:3px solid var(--gold);border-radius:28px;box-shadow:0 18px 60px #0007}.portrait{background:#1a1021;display:flex;align-items:center;justify-content:center;min-height:260px;overflow:hidden}.portrait img{display:block;width:100%;height:auto;object-fit:contain;object-position:center center}.portrait .fallback{font-size:70px;font-weight:900;color:white;padding:90px 20px}.cardhead{padding:14px 16px 10px;background:#261531;color:#fff}.cardhead h2{margin:0;font-size:27px;line-height:1}.cardhead .mod{font-size:11px;letter-spacing:.13em;margin-top:6px;color:#e3d2ea}.stats{background:#f7f0df}.stat{display:grid;grid-template-columns:minmax(0,1fr) 62px;gap:10px;align-items:center;padding:0;border-top:1px solid #decfb8}.statbutton{width:100%;background:transparent;color:#271b2c;text-align:left;padding:10px 12px;border-radius:0;font-weight:800;display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:10px}.statText{display:flex;flex-direction:column;gap:2px;min-width:0}.statName{font-weight:900;line-height:1.05}.statComment{font-size:12px;font-weight:600;line-height:1.2;color:#4b3f46}.catIcon{width:28px;height:28px;display:inline-grid;place-items:center;border-radius:50%;background:#fff9;flex:0 0 28px;overflow:hidden}.catIcon img{width:20px;height:20px;display:block;object-fit:contain}.score{color:#fff;text-align:center;padding:6px 5px;border-radius:999px;font-weight:900;min-width:48px;margin-right:12px;box-shadow:inset 0 0 0 1px #ffffff55}.table{display:grid;gap:10px}.seat{background:#1a1021;border:1px solid #4c3458;border-radius:16px;padding:12px}.seat.winner{outline:2px solid var(--gold)}.seat .row{display:flex;justify-content:space-between;gap:10px;align-items:center}.muted{color:var(--muted);font-size:13px}.result{margin-top:12px;padding:14px;border:1px solid #75558a;border-radius:16px;background:#2f193a}.next{width:100%;margin-top:10px;position:sticky;bottom:12px;z-index:10;box-shadow:0 10px 30px #0008}.error{padding:16px;border:1px solid #8b5070;border-radius:18px;background:#341526}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.topbar{grid-template-columns:repeat(2,1fr)}.wrap{width:min(100% - 16px,700px);padding-top:16px}.portrait{min-height:220px;max-height:55vh}.portrait img{max-height:55vh}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <h1>QUEER ICONS</h1>
-  <p class="subtitle">Top Trumps historique • 39 cartes • 9 statistiques • 2–6 joueurs</p>
-</header>
-<div id="loading" class="panel">Chargement des 39 cartes…</div>
-<div id="error" class="error hidden"></div>
-<section id="setup" class="panel setup hidden">
-  <div>
-    <label for="playerCount">Nombre de joueurs</label>
-    <select id="playerCount">
-      <option value="2">2 joueurs</option><option value="3">3 joueurs</option><option value="4">4 joueurs</option><option value="5">5 joueurs</option><option value="6">6 joueurs</option>
-    </select>
-  </div>
-  <div>
-    <label for="gameMode">Mode de jeu</label>
-    <select id="gameMode">
-      <option value="classic">Classique — scores et commentaires visibles</option>
-      <option value="blind">Aveugle — commentaires visibles, scores cachés</option>
-      <option value="superblind">Super aveugle — scores et commentaires cachés</option>
-    </select>
-  </div>
-  <button id="startBtn" class="primary">Distribuer les cartes</button>
-</section>
-<section id="game" class="hidden">
-  <div class="topbar">
-    <div class="metric"><small>Manche</small><strong id="round">1</strong></div>
-    <div class="metric"><small>Leader</small><strong id="leader">J1</strong></div>
-    <div class="metric"><small>Cagnotte</small><strong id="potCount">0</strong></div>
-    <div class="metric"><small>Cartes en jeu</small><strong id="totalCount">39</strong></div>
-  </div>
-  <div id="players" class="players"></div>
-  <div class="grid">
-    <article class="card">
-      <div class="portrait"><img id="portraitImg" alt=""><div id="portraitFallback" class="fallback hidden">QI</div></div>
-      <div class="cardhead"><h2 id="cardName"></h2><div id="modifier" class="mod"></div></div>
-      <div id="stats" class="stats"></div>
-    </article>
-    <aside><div class="panel"><h3 style="margin-top:0">Table</h3><div id="table" class="table"></div><div id="result" class="result hidden"></div><button id="nextBtn" class="primary next hidden">Manche suivante</button><button id="restartBtn" class="secondary next">Nouvelle partie</button></div></aside>
-  </div>
-</section>
-</div>
+<div class="wrap"><header><h1>QUEER ICONS</h1><p class="subtitle">Top Trumps historique • 39 cartes • 9 statistiques • 2–6 joueurs</p></header><div id="loading" class="panel">Chargement des 39 cartes…</div><div id="error" class="error hidden"></div><section id="setup" class="panel setup hidden"><div><label for="playerCount">Nombre de joueurs</label><select id="playerCount"><option value="2">2 joueurs</option><option value="3">3 joueurs</option><option value="4">4 joueurs</option><option value="5">5 joueurs</option><option value="6">6 joueurs</option></select></div><div><label for="gameMode">Mode de jeu</label><select id="gameMode"><option value="classic">Classique — scores et commentaires visibles</option><option value="blind">Aveugle — commentaires visibles, scores cachés</option><option value="superblind">Super aveugle — scores et commentaires cachés</option></select></div><button id="startBtn" class="primary">Distribuer les cartes</button></section><section id="game" class="hidden"><div class="topbar"><div class="metric"><small>Manche</small><strong id="round">1</strong></div><div class="metric"><small>Leader</small><strong id="leader">J1</strong></div><div class="metric"><small>Cagnotte</small><strong id="potCount">0</strong></div><div class="metric"><small>Cartes en jeu</small><strong id="totalCount">39</strong></div></div><div id="players" class="players"></div><div class="grid"><article class="card"><div class="portrait"><img id="portraitImg" alt=""><div id="portraitFallback" class="fallback hidden">QI</div></div><div class="cardhead"><h2 id="cardName"></h2><div id="modifier" class="mod"></div></div><div id="stats" class="stats"></div></article><aside><div class="panel"><h3 style="margin-top:0">Table</h3><div id="table" class="table"></div><div id="result" class="result hidden"></div><button id="nextBtn" class="primary next hidden">Manche suivante</button><button id="restartBtn" class="secondary next">Nouvelle partie</button></div></aside></div></section></div>
 <script>
-const CATEGORY_META = [
-  {name:"Courage",icon:"💪",color:"#E40303"},
-  {name:"Martyrologie",icon:"🩸",color:"#FF5A1F"},
-  {name:"Miracle",icon:"✨",color:"#FF8C00"},
-  {name:"Drag potential",icon:"👠",color:"#FFED00"},
-  {name:"Empreinte culturelle",icon:"🎭",color:"#008026"},
-  {name:"Extravagance sexuelle",icon:"💋",color:"#00A98F"},
-  {name:"Coming out",icon:"🌈",color:"#004DFF"},
-  {name:"Fait avancer la cause",icon:"✊",color:"#4933A3"},
-  {name:"Flamboyance des tenues",icon:"👗",color:"#750787"}
+const CATEGORY_META=[
+{name:"Courage",icon:"icons/courage.svg",color:"#E40303"},
+{name:"Martyrologie",icon:"icons/martyrologie.svg",color:"#FF5A1F"},
+{name:"Miracle",icon:"icons/miracle.svg",color:"#FF8C00"},
+{name:"Drag potential",icon:"icons/drag.svg",color:"#FFED00"},
+{name:"Empreinte culturelle",icon:"icons/culture.svg",color:"#008026"},
+{name:"Extravagance sexuelle",icon:"icons/sexualite.svg",color:"#00A98F"},
+{name:"Coming out",icon:"icons/coming-out.svg",color:"#004DFF"},
+{name:"Fait avancer la cause",icon:"icons/cause.svg",color:"#4933A3"},
+{name:"Flamboyance des tenues",icon:"icons/tenues.svg",color:"#750787"}
 ];
-const CATEGORIES=CATEGORY_META.map(x=>x.name);
-let CARDS=[];
-let S={n:2,hands:[],leader:0,round:1,pot:[],locked:false,mode:"classic",ended:false};
-const $=id=>document.getElementById(id);
+const CATEGORIES=CATEGORY_META.map(x=>x.name);let CARDS=[];let S={n:2,hands:[],leader:0,round:1,pot:[],locked:false,mode:"classic",ended:false};const $=id=>document.getElementById(id);
 function initials(name){return name.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join("").toUpperCase()}
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function alive(){return S.hands.map((h,i)=>h.length?i:null).filter(i=>i!==null)}
-function normalizeCard(c,i){
-  const name=c.name??c.Nom??c.nom??("Carte "+(i+1));
-  const raw=c.scores??c.stats??c.statistics??{};const scores={};
-  CATEGORIES.forEach(cat=>{let v=raw[cat];if(v===undefined)v=c[cat];scores[cat]=Number(v)});
-  return{id:c.id??String(i+1),name,modifier:c.modifier??c.Modulateur??"",image:c.image??c.imagePath??c.visual??c["Fichier visuel"]??"",scores,comments:c.comments??{}};
-}
-function validate(cards){
-  if(!Array.isArray(cards)||cards.length!==39)throw new Error("Le fichier cards.json doit contenir exactement 39 cartes.");
-  cards.forEach(c=>CATEGORIES.forEach(cat=>{const v=c.scores[cat];if(!Number.isFinite(v)||v<0||v>100)throw new Error(`Statistique invalide : ${c.name} / ${cat}`)}));
-}
-function resolveImagePath(path){
-  if(!path)return "";
-  path=String(path).replace(/^\.?\//,"");
-  if(/^Images\//.test(path))return path;
-  if(/^images\//.test(path))return "Images/"+path.split("/").pop();
-  return "Images/"+path.split("/").pop();
-}
-async function load(){
-  try{
-    const res=await fetch("cards.json?v=queer-icons-20260830-2",{cache:"no-store"});
-    if(!res.ok)throw new Error("Impossible de charger cards.json");
-    const json=await res.json();const raw=Array.isArray(json)?json:(json.cards??json.data??[]);
-    CARDS=raw.map(normalizeCard);validate(CARDS);$("loading").classList.add("hidden");$("setup").classList.remove("hidden");
-  }catch(err){$("loading").classList.add("hidden");$("error").classList.remove("hidden");$("error").innerHTML="<strong>Erreur :</strong> "+err.message;console.error(err)}
-}
-function start(){
-  S={n:Number($("playerCount").value),hands:[],leader:0,round:1,pot:[],locked:false,mode:$("gameMode").value,ended:false};
-  S.hands=Array.from({length:S.n},()=>[]);shuffle(CARDS).forEach((c,i)=>S.hands[i%S.n].push(c));
-  $("setup").classList.add("hidden");$("game").classList.remove("hidden");render();
-}
-function totalOwned(){return S.hands.reduce((n,h)=>n+h.length,0)}
-function absoluteWinner(){
-  if(S.pot.length!==0)return null;
-  const total=CARDS.length;
-  const idx=S.hands.findIndex(h=>h.length===total);
-  return idx>=0?idx:null;
-}
-function settleOrphanPot(preferred){
-  let a=alive();
-  if(S.pot.length&&a.length===1){S.hands[a[0]].push(...S.pot);S.pot=[];return a[0]}
-  if(S.pot.length&&a.length===0){const w=Number.isInteger(preferred)?preferred:S.leader;S.hands[w].push(...S.pot);S.pot=[];S.leader=w;return w}
-  return null;
-}
-function render(){
-  const finalWinner=absoluteWinner();if(finalWinner!==null){end(finalWinner);return}
-  const a=alive();
-  if(!a.length){settleOrphanPot(S.leader);return render()}
-  if(!S.hands[S.leader]?.length)S.leader=a[0];
-  const c=S.hands[S.leader][0];
-  $("round").textContent=S.round;$("leader").textContent="J"+(S.leader+1);$("potCount").textContent=S.pot.length;$("totalCount").textContent=totalOwned()+S.pot.length;$("cardName").textContent=c.name;
-  const modeLabel=S.mode==="blind"?" · MODE AVEUGLE":S.mode==="superblind"?" · MODE SUPER AVEUGLE":"";$("modifier").textContent=(c.modifier||"")+modeLabel;
-  const img=$("portraitImg"),fb=$("portraitFallback");img.classList.remove("hidden");fb.classList.add("hidden");img.alt=c.name;img.src=resolveImagePath(c.image);img.onerror=()=>{img.classList.add("hidden");fb.textContent=initials(c.name);fb.classList.remove("hidden")};
-  $("stats").innerHTML="";
-  CATEGORIES.forEach(cat=>{
-    const meta=CATEGORY_META.find(x=>x.name===cat),row=document.createElement("div"),b=document.createElement("button"),sc=document.createElement("span");
-    row.className="stat";row.style.background=`linear-gradient(90deg, ${meta.color}2b 0%, ${meta.color}14 72%, #fff0 100%)`;row.style.borderLeft=`8px solid ${meta.color}`;
-    b.type="button";b.className="statbutton";const showComment=S.mode!=="superblind";const comment=showComment?(c.comments?.[cat]||""):"";
-    b.innerHTML=`<span class="catIcon" style="box-shadow:inset 0 0 0 2px ${meta.color}88">${meta.icon}</span><span class="statText"><span class="statName">${cat}</span>${showComment?`<span class="statComment">${comment}</span>`:""}</span>`;
-    b.disabled=S.locked;b.addEventListener("click",()=>fight(cat));
-    sc.className="score";sc.style.background=meta.color;sc.textContent=S.mode==="classic"?c.scores[cat]:"?";sc.title=S.mode==="classic"?"":"Score masqué";
-    row.append(b,sc);$("stats").append(row);
-  });
-  $("players").innerHTML="";S.hands.forEach((h,i)=>{const x=document.createElement("span");x.className="badge";x.textContent=`J${i+1} · ${h.length} carte${h.length>1?"s":""}${i===S.leader?" · LEADER":""}`;$("players").append(x)});
-  $("table").innerHTML="";S.hands.forEach((h,i)=>{const d=document.createElement("div");d.className="seat";d.innerHTML=`<div class="row"><strong>Joueur ${i+1}</strong><span>${h.length} cartes</span></div><div class="muted">${h.length?(i===S.leader?"Carte visible : "+h[0].name:"Carte cachée"):"Sans carte"}</div>`;$("table").append(d)});
-  $("result").classList.add("hidden");$("nextBtn").classList.add("hidden");
-}
-function fight(cat){
-  if(S.locked||S.ended)return;S.locked=true;
-  const contenders=alive().map(i=>({i,card:S.hands[i][0],v:S.hands[i][0].scores[cat]}));
-  if(contenders.length<2){settleOrphanPot(contenders[0]?.i??S.leader);const w=absoluteWinner();if(w!==null)return end(w);S.locked=false;return render()}
-  const max=Math.max(...contenders.map(x=>x.v));const winners=contenders.filter(x=>x.v===max);
-  $("table").innerHTML="";contenders.forEach(x=>{const d=document.createElement("div");d.className="seat"+(x.v===max?" winner":"");d.innerHTML=`<div class="row"><strong>J${x.i+1} · ${x.card.name}</strong><span class="score">${x.v}</span></div><div class="muted">${cat}</div>`;$("table").append(d)});
-  const played=contenders.map(x=>S.hands[x.i].shift());const result=$("result");result.classList.remove("hidden");
-  if(winners.length>1){
-    S.pot.push(...played);if(!winners.some(x=>x.i===S.leader))S.leader=winners[0].i;
-    const auto=settleOrphanPot(S.leader);
-    if(auto!==null)result.innerHTML=`<strong>Fin d’égalité</strong><br>Les autres joueurs n’ont plus de carte pour poursuivre : J${auto+1} récupère la cagnotte.`;
-    else result.innerHTML=`<strong>ÉGALITÉ — CAGNOTTE</strong><br>${winners.map(x=>"J"+(x.i+1)).join(" / ")} : ${max}. Les ${played.length} cartes rejoignent la cagnotte et la partie continue.`;
-  }else{
-    const w=winners[0].i;const prize=[...S.pot,...played];S.pot=[];S.hands[w].push(...prize);S.leader=w;result.innerHTML=`<strong>J${w+1} gagne la manche</strong><br>${winners[0].card.name} remporte « ${cat} » avec ${max} et récupère ${prize.length} carte${prize.length>1?"s":""}.`;
-  }
-  $("potCount").textContent=S.pot.length;const finalWinner=absoluteWinner();
-  if(finalWinner!==null){S.ended=true;$("nextBtn").classList.add("hidden");setTimeout(()=>end(finalWinner),250)}else{$("nextBtn").classList.remove("hidden")}
-  setTimeout(()=>$("result").scrollIntoView({behavior:"smooth",block:"center"}),50);
-}
-function next(){if(!S.locked||S.ended)return;S.round++;S.locked=false;render();window.scrollTo({top:0,behavior:"smooth"})}
-function restart(){S={n:2,hands:[],leader:0,round:1,pot:[],locked:false,mode:"classic",ended:false};$("game").classList.add("hidden");$("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})}
-function end(w){
-  S.ended=true;$("round").textContent=S.round;$("leader").textContent="J"+(w+1);$("potCount").textContent=0;$("totalCount").textContent=CARDS.length;$("stats").innerHTML="";
-  $("result").classList.remove("hidden");$("result").innerHTML=`<strong>Joueur ${w+1} remporte la partie.</strong><br>Il contrôle les ${CARDS.length} cartes.`;$("nextBtn").classList.add("hidden");
-  $("players").innerHTML="";S.hands.forEach((h,i)=>{const x=document.createElement("span");x.className="badge";x.textContent=`J${i+1} · ${h.length} carte${h.length>1?"s":""}${i===w?" · VAINQUEUR":""}`;$("players").append(x)});
-}
+function normalizeCard(c,i){const name=c.name??c.Nom??c.nom??("Carte "+(i+1));const raw=c.scores??c.stats??c.statistics??{};const scores={};CATEGORIES.forEach(cat=>{let v=raw[cat];if(v===undefined)v=c[cat];scores[cat]=Number(v)});return{id:c.id??String(i+1),name,modifier:c.modifier??c.Modulateur??"",image:c.image??c.imagePath??c.visual??c["Fichier visuel"]??"",scores,comments:c.comments??{}}}
+function validate(cards){if(!Array.isArray(cards)||cards.length!==39)throw new Error("Le fichier cards.json doit contenir exactement 39 cartes.");cards.forEach(c=>CATEGORIES.forEach(cat=>{const v=c.scores[cat];if(!Number.isFinite(v)||v<0||v>100)throw new Error(`Statistique invalide : ${c.name} / ${cat}`)}))}
+function resolveImagePath(path){if(!path)return "";path=String(path).replace(/^\.?\//,"");if(/^Images\//.test(path))return path;if(/^images\//.test(path))return "Images/"+path.split("/").pop();return "Images/"+path.split("/").pop()}
+async function load(){try{const res=await fetch("cards.json?v=queer-icons-20260830-2",{cache:"no-store"});if(!res.ok)throw new Error("Impossible de charger cards.json");const json=await res.json();const raw=Array.isArray(json)?json:(json.cards??json.data??[]);CARDS=raw.map(normalizeCard);validate(CARDS);$("loading").classList.add("hidden");$("setup").classList.remove("hidden")}catch(err){$("loading").classList.add("hidden");$("error").classList.remove("hidden");$("error").innerHTML="<strong>Erreur :</strong> "+err.message;console.error(err)}}
+function start(){S={n:Number($("playerCount").value),hands:[],leader:0,round:1,pot:[],locked:false,mode:$("gameMode").value,ended:false};S.hands=Array.from({length:S.n},()=>[]);shuffle(CARDS).forEach((c,i)=>S.hands[i%S.n].push(c));$("setup").classList.add("hidden");$("game").classList.remove("hidden");render()}
+function totalOwned(){return S.hands.reduce((n,h)=>n+h.length,0)}function absoluteWinner(){if(S.pot.length!==0)return null;const total=CARDS.length;const idx=S.hands.findIndex(h=>h.length===total);return idx>=0?idx:null}
+function settleOrphanPot(preferred){let a=alive();if(S.pot.length&&a.length===1){S.hands[a[0]].push(...S.pot);S.pot=[];return a[0]}if(S.pot.length&&a.length===0){const w=Number.isInteger(preferred)?preferred:S.leader;S.hands[w].push(...S.pot);S.pot=[];S.leader=w;return w}return null}
+function render(){const finalWinner=absoluteWinner();if(finalWinner!==null){end(finalWinner);return}const a=alive();if(!a.length){settleOrphanPot(S.leader);return render()}if(!S.hands[S.leader]?.length)S.leader=a[0];const c=S.hands[S.leader][0];$("round").textContent=S.round;$("leader").textContent="J"+(S.leader+1);$("potCount").textContent=S.pot.length;$("totalCount").textContent=totalOwned()+S.pot.length;$("cardName").textContent=c.name;const modeLabel=S.mode==="blind"?" · MODE AVEUGLE":S.mode==="superblind"?" · MODE SUPER AVEUGLE":"";$("modifier").textContent=(c.modifier||"")+modeLabel;const img=$("portraitImg"),fb=$("portraitFallback");img.classList.remove("hidden");fb.classList.add("hidden");img.alt=c.name;img.src=resolveImagePath(c.image);img.onerror=()=>{img.classList.add("hidden");fb.textContent=initials(c.name);fb.classList.remove("hidden")};$("stats").innerHTML="";CATEGORIES.forEach(cat=>{const meta=CATEGORY_META.find(x=>x.name===cat),row=document.createElement("div"),b=document.createElement("button"),sc=document.createElement("span");row.className="stat";row.style.background=`linear-gradient(90deg, ${meta.color}2b 0%, ${meta.color}14 72%, #fff0 100%)`;row.style.borderLeft=`8px solid ${meta.color}`;b.type="button";b.className="statbutton";const showComment=S.mode!=="superblind";const comment=showComment?(c.comments?.[cat]||""):"";b.innerHTML=`<span class="catIcon" style="box-shadow:inset 0 0 0 2px ${meta.color}88"><img src="${meta.icon}" alt=""></span><span class="statText"><span class="statName">${cat}</span>${showComment?`<span class="statComment">${comment}</span>`:""}</span>`;b.disabled=S.locked;b.addEventListener("click",()=>fight(cat));sc.className="score";sc.style.background=meta.color;sc.textContent=S.mode==="classic"?c.scores[cat]:"?";sc.title=S.mode==="classic"?"":"Score masqué";row.append(b,sc);$("stats").append(row)});$("players").innerHTML="";S.hands.forEach((h,i)=>{const x=document.createElement("span");x.className="badge";x.textContent=`J${i+1} · ${h.length} carte${h.length>1?"s":""}${i===S.leader?" · LEADER":""}`;$("players").append(x)});$("table").innerHTML="";S.hands.forEach((h,i)=>{const d=document.createElement("div");d.className="seat";d.innerHTML=`<div class="row"><strong>Joueur ${i+1}</strong><span>${h.length} cartes</span></div><div class="muted">${h.length?(i===S.leader?"Carte visible : "+h[0].name:"Carte cachée"):"Sans carte"}</div>`;$("table").append(d)});$("result").classList.add("hidden");$("nextBtn").classList.add("hidden")}
+function fight(cat){if(S.locked||S.ended)return;S.locked=true;const contenders=alive().map(i=>({i,card:S.hands[i][0],v:S.hands[i][0].scores[cat]}));if(contenders.length<2){settleOrphanPot(contenders[0]?.i??S.leader);const w=absoluteWinner();if(w!==null)return end(w);S.locked=false;return render()}const max=Math.max(...contenders.map(x=>x.v));const winners=contenders.filter(x=>x.v===max);$("table").innerHTML="";contenders.forEach(x=>{const d=document.createElement("div");d.className="seat"+(x.v===max?" winner":"");d.innerHTML=`<div class="row"><strong>J${x.i+1} · ${x.card.name}</strong><span class="score">${x.v}</span></div><div class="muted">${cat}</div>`;$("table").append(d)});const played=contenders.map(x=>S.hands[x.i].shift());const result=$("result");result.classList.remove("hidden");if(winners.length>1){S.pot.push(...played);if(!winners.some(x=>x.i===S.leader))S.leader=winners[0].i;const auto=settleOrphanPot(S.leader);if(auto!==null)result.innerHTML=`<strong>Fin d’égalité</strong><br>Les autres joueurs n’ont plus de carte pour poursuivre : J${auto+1} récupère la cagnotte.`;else result.innerHTML=`<strong>ÉGALITÉ — CAGNOTTE</strong><br>${winners.map(x=>"J"+(x.i+1)).join(" / ")} : ${max}. Les ${played.length} cartes rejoignent la cagnotte et la partie continue.`}else{const w=winners[0].i;const prize=[...S.pot,...played];S.pot=[];S.hands[w].push(...prize);S.leader=w;result.innerHTML=`<strong>J${w+1} gagne la manche</strong><br>${winners[0].card.name} remporte « ${cat} » avec ${max} et récupère ${prize.length} carte${prize.length>1?"s":""}.`}$("potCount").textContent=S.pot.length;const finalWinner=absoluteWinner();if(finalWinner!==null){S.ended=true;$("nextBtn").classList.add("hidden");setTimeout(()=>end(finalWinner),250)}else{$("nextBtn").classList.remove("hidden")}setTimeout(()=>$("result").scrollIntoView({behavior:"smooth",block:"center"}),50)}
+function next(){if(!S.locked||S.ended)return;S.round++;S.locked=false;render();window.scrollTo({top:0,behavior:"smooth"})}function restart(){S={n:2,hands:[],leader:0,round:1,pot:[],locked:false,mode:"classic",ended:false};$("game").classList.add("hidden");$("setup").classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})}
+function end(w){S.ended=true;$("round").textContent=S.round;$("leader").textContent="J"+(w+1);$("potCount").textContent=0;$("totalCount").textContent=CARDS.length;$("stats").innerHTML="";$("result").classList.remove("hidden");$("result").innerHTML=`<strong>Joueur ${w+1} remporte la partie.</strong><br>Il contrôle les ${CARDS.length} cartes.`;$("nextBtn").classList.add("hidden");$("players").innerHTML="";S.hands.forEach((h,i)=>{const x=document.createElement("span");x.className="badge";x.textContent=`J${i+1} · ${h.length} carte${h.length>1?"s":""}${i===w?" · VAINQUEUR":""}`;$("players").append(x)})}
 $("startBtn").addEventListener("click",start);$("nextBtn").addEventListener("click",next);$("restartBtn").addEventListener("click",restart);load();
-</script>
-</body>
-</html>
+</script></body></html>
