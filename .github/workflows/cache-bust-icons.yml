@@ -1,4 +1,4 @@
-name: Restore original Martyrologie icon
+name: Sharpen three category icons
 
 on:
   push:
@@ -10,30 +10,33 @@ permissions:
   contents: write
 
 jobs:
-  restore-martyrologie:
+  sharpen-icons:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Restore validated original icon and bump cache
+      - name: Avoid raster upscaling and bump cache
         run: |
-          git show 73473ada8b30cfbf92af0207a25f69e9f184583b:icons/martyrologie.svg > icons/martyrologie.svg
           python - <<'PY'
           from pathlib import Path
+          import re
           p = Path('index.html')
           s = p.read_text()
-          import re
-          s, n = re.subn(r'icons/martyrologie\.svg\?v=[^"\']+', 'icons/martyrologie.svg?v=20260831-7', s, count=1)
-          if n != 1:
-              raise SystemExit('Could not update Martyrologie URL')
+          marker = '.catIcon img{width:52px;height:52px;display:block;object-fit:contain}'
+          extra = marker + '\n.catIcon img[src*="courage.svg"],.catIcon img[src*="miracle.svg"],.catIcon img[src*="drag.svg"]{width:48px;height:48px;image-rendering:auto}'
+          if 'img[src*="courage.svg"]' not in s:
+              if marker not in s:
+                  raise SystemExit('Could not find icon CSS marker')
+              s = s.replace(marker, extra, 1)
+          s = re.sub(r'icons/courage\.svg\?v=[^"\']+', 'icons/courage.svg?v=20260831-8', s, count=1)
+          s = re.sub(r'icons/miracle\.svg\?v=[^"\']+', 'icons/miracle.svg?v=20260831-8', s, count=1)
+          s = re.sub(r'icons/drag\.svg\?v=[^"\']+', 'icons/drag.svg?v=20260831-8', s, count=1)
           p.write_text(s)
           PY
       - name: Commit change
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add icons/martyrologie.svg index.html
+          git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Restore original Martyrologie icon"
+          git commit -m "Sharpen courage miracle and drag icons"
           git push
