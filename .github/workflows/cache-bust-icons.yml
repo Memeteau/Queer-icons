@@ -20,8 +20,8 @@ jobs:
           from pathlib import Path
           p = Path('index.html')
           s = p.read_text()
-          old = 'icons/martyrologie.svg?v=20260831-4'
-          new = 'icons/martyrologie.svg?v=20260831-5'
+          old = 'icons/martyrologie.svg?v=20260831-5'
+          new = 'icons/martyrologie.svg?v=20260831-6'
           if old not in s:
               raise SystemExit(f'Missing expected string: {old}')
           p.write_text(s.replace(old, new, 1))
