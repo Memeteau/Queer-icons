@@ -1,4 +1,4 @@
-name: Cache-bust Martyrologie icon URL
+name: Restore original Martyrologie icon
 
 on:
   push:
@@ -10,27 +10,30 @@ permissions:
   contents: write
 
 jobs:
-  update-icon-version:
+  restore-martyrologie:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Bump Martyrologie cache version
+        with:
+          fetch-depth: 0
+      - name: Restore validated original icon and bump cache
         run: |
+          git show 73473ada8b30cfbf92af0207a25f69e9f184583b:icons/martyrologie.svg > icons/martyrologie.svg
           python - <<'PY'
           from pathlib import Path
           p = Path('index.html')
           s = p.read_text()
-          old = 'icons/martyrologie.svg?v=20260831-5'
-          new = 'icons/martyrologie.svg?v=20260831-6'
-          if old not in s:
-              raise SystemExit(f'Missing expected string: {old}')
-          p.write_text(s.replace(old, new, 1))
+          import re
+          s, n = re.subn(r'icons/martyrologie\.svg\?v=[^"\']+', 'icons/martyrologie.svg?v=20260831-7', s, count=1)
+          if n != 1:
+              raise SystemExit('Could not update Martyrologie URL')
+          p.write_text(s)
           PY
       - name: Commit change
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add icons/martyrologie.svg index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Force refresh of Martyrologie icon"
+          git commit -m "Restore original Martyrologie icon"
           git push
