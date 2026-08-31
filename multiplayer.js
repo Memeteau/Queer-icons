@@ -1,4 +1,6 @@
 (() => {
+  if(window.__QI_MULTIPLAYER_LOADED__) return;
+  window.__QI_MULTIPLAYER_LOADED__=true;
   const WS_URL='wss://queer-icons-multiplayer.onrender.com';
   let ws=null,myId=null,room=null,active=false,isHost=false,seat=-1,phase='lobby';
   const originalRender=window.render,originalFight=window.fight,originalNext=window.next,originalRestart=window.restart,originalStart=window.start;
@@ -7,6 +9,7 @@
   .multiBox{margin-top:8px;padding:14px;border:1px solid #614272;border-radius:18px;background:#160e1d;display:grid;gap:10px}.multiRow{display:flex;gap:8px;flex-wrap:wrap}.multiRow>*{flex:1;min-width:120px}.multiBox input{width:100%;padding:12px 13px;border-radius:13px;border:1px solid #614272;background:#0e0913;color:#fff;font:inherit}.roomCode{font:900 28px/1 Georgia,serif;letter-spacing:.12em;color:#f1cf54}.multiPlayers{display:flex;gap:6px;flex-wrap:wrap}.multiStatus{color:#c9bacf;font-size:13px}.multiBadge{background:#392047;border:1px solid #624675;border-radius:999px;padding:6px 9px;font-size:12px}.onlineOnly{display:none}.multiActive .onlineOnly{display:block}.multiActive #playerCount{pointer-events:none;opacity:.55}
   `;document.head.appendChild(css);
   const setup=document.getElementById('setup');if(!setup)return;
+  if(setup.querySelector('.multiBox')) return;
   const box=document.createElement('div');box.className='multiBox';box.innerHTML=`<strong>Multijoueur en ligne</strong><div class="multiRow"><input id="multiName" maxlength="24" placeholder="Ton prénom / pseudo"><input id="multiCode" maxlength="5" placeholder="Code de partie"></div><div class="multiRow"><button id="createRoom" class="secondary">Créer une partie</button><button id="joinRoom" class="secondary">Rejoindre</button></div><div id="multiLobby" class="hidden"><div class="multiStatus">Code de partie</div><div id="roomCode" class="roomCode"></div><div id="multiPlayers" class="multiPlayers"></div><div id="multiStatus" class="multiStatus"></div><button id="onlineStart" class="primary hidden">Lancer la partie en ligne</button></div>`;setup.insertBefore(box,document.getElementById('startBtn'));
   const $m=id=>document.getElementById(id);
   function connect(done){if(ws&&ws.readyState===1)return done();$m('multiStatus').textContent='Connexion au serveur…';ws=new WebSocket(WS_URL);ws.onopen=()=>done();ws.onerror=()=>{$m('multiStatus').textContent='Impossible de joindre le serveur multijoueur.'};ws.onmessage=e=>{let m;try{m=JSON.parse(e.data)}catch{return}handle(m)};ws.onclose=()=>{if(active)$m('multiStatus').textContent='Connexion perdue. Recharge la page pour te reconnecter.'}}
