@@ -1,4 +1,4 @@
-name: Cache-bust four icon URLs
+name: Cache-bust Martyrologie icon URL
 
 on:
   push:
@@ -10,27 +10,21 @@ permissions:
   contents: write
 
 jobs:
-  update-icon-versions:
+  update-icon-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Bump cache versions for four icons
+      - name: Bump Martyrologie cache version
         run: |
           python - <<'PY'
           from pathlib import Path
           p = Path('index.html')
           s = p.read_text()
-          replacements = {
-              'icons/courage.svg?v=20260831-3': 'icons/courage.svg?v=20260831-4',
-              'icons/martyrologie.svg?v=20260831-3': 'icons/martyrologie.svg?v=20260831-4',
-              'icons/miracle.svg?v=20260831-3': 'icons/miracle.svg?v=20260831-4',
-              'icons/drag.svg?v=20260831-3': 'icons/drag.svg?v=20260831-4',
-          }
-          for old, new in replacements.items():
-              if old not in s:
-                  raise SystemExit(f'Missing expected string: {old}')
-              s = s.replace(old, new, 1)
-          p.write_text(s)
+          old = 'icons/martyrologie.svg?v=20260831-4'
+          new = 'icons/martyrologie.svg?v=20260831-5'
+          if old not in s:
+              raise SystemExit(f'Missing expected string: {old}')
+          p.write_text(s.replace(old, new, 1))
           PY
       - name: Commit change
         run: |
@@ -38,5 +32,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Force refresh of four category icons"
+          git commit -m "Force refresh of Martyrologie icon"
           git push
