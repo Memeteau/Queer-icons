@@ -41,4 +41,3 @@
   function watch(){const r=document.getElementById('result');if(!r)return;const visible=!r.classList.contains('hidden')&&r.textContent.trim();if(visible&&r.textContent!==lastText){lastText=r.textContent;show()}if(!visible)lastText=''}
   new MutationObserver(watch).observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['class']});
 })();
-const multiplayerLoader=document.createElement('script');multiplayerLoader.src='multiplayer.js?v=20260831-1';document.body.appendChild(multiplayerLoader);
