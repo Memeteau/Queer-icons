@@ -3,6 +3,8 @@
   window.__QI_MULTIPLAYER_LOADED__=true;
   const WS_URL='wss://queer-icons-multiplayer.onrender.com';
   let ws=null,myId=null,room=null,active=false,isHost=false,seat=-1,phase='lobby';
+  window.QI_MULTIPLAYER={active:false,seat:-1,isHost:false};
+  const publishContext=()=>{window.QI_MULTIPLAYER={active,seat,isHost};};
   const originalRender=window.render,originalFight=window.fight,originalNext=window.next,originalRestart=window.restart,originalStart=window.start;
   const send=(type,data={})=>ws&&ws.readyState===1&&ws.send(JSON.stringify({type,...data}));
   const css=document.createElement('style');css.textContent=`
@@ -16,11 +18,11 @@
   function name(){return $m('multiName').value.trim()||'Joueur'}
   $m('createRoom').onclick=()=>connect(()=>send('create',{name:name()}));
   $m('joinRoom').onclick=()=>{const code=$m('multiCode').value.trim().toUpperCase();if(!code)return;$m('multiCode').value=code;connect(()=>send('join',{name:name(),code}))};
-  $m('onlineStart').onclick=()=>{if(!isHost||!room||room.players.length<2)return;document.getElementById('playerCount').value=String(room.players.length);active=true;phase='play';originalStart();syncPlay()};
+  $m('onlineStart').onclick=()=>{if(!isHost||!room||room.players.length<2)return;document.getElementById('playerCount').value=String(room.players.length);active=true;phase='play';publishContext();originalStart();syncPlay()};
   function handle(m){
     if(m.type==='hello'){myId=m.id;return}
     if(m.type==='error'){alert(m.message||'Erreur multijoueur');return}
-    if(m.type==='room'){room=m;active=true;isHost=m.hostId===myId;seat=m.players.findIndex(p=>p.id===myId);phase=m.state?.phase||'lobby';renderLobby();if(m.state)applyState(m.state);return}
+    if(m.type==='room'){room=m;active=true;isHost=m.hostId===myId;seat=m.players.findIndex(p=>p.id===myId);publishContext();phase=m.state?.phase||'lobby';renderLobby();if(m.state)applyState(m.state);return}
     if(m.type==='state'){applyState(m.state);return}
     if(m.type==='action'&&isHost){const sender=room?.players.findIndex(p=>p.id===m.playerId)??-1;if(m.action==='fight'&&sender===S.leader&&!S.locked){const played=S.hands.map(h=>h[0]||null);originalFight(m.payload.category);phase='result';sendState({played,table:document.getElementById('table').innerHTML,result:document.getElementById('result').innerHTML,category:m.payload.category})}else if(m.action==='next'&&S.locked&&!S.ended){originalNext();phase='play';syncPlay()}}
   }
@@ -29,7 +31,7 @@
   }
   function sendState(extra={}){send('state',{state:{phase,game:S,names:room.players.map(p=>p.name),...extra}})}
   function syncPlay(){sendState();personalize()}
-  function applyState(st){if(!st?.game)return;S=st.game;phase=st.phase||'play';document.getElementById('setup').classList.add('hidden');document.getElementById('game').classList.remove('hidden');originalRender();personalize(st);if(phase==='result'){document.getElementById('table').innerHTML=st.table||'';const r=document.getElementById('result');r.innerHTML=st.result||'';r.classList.remove('hidden');document.getElementById('nextBtn').classList.toggle('hidden',!isHost)}else document.getElementById('nextBtn').classList.add('hidden')}
+  function applyState(st){if(!st?.game)return;S=st.game;phase=st.phase||'play';publishContext();document.getElementById('setup').classList.add('hidden');document.getElementById('game').classList.remove('hidden');originalRender();personalize(st);if(phase==='result'){document.getElementById('table').innerHTML=st.table||'';const r=document.getElementById('result');r.innerHTML=st.result||'';r.classList.remove('hidden');document.getElementById('nextBtn').classList.toggle('hidden',!isHost)}else document.getElementById('nextBtn').classList.add('hidden')}
   function personalize(st={}){
     if(!active||seat<0||!S.hands?.[seat])return;const card=phase==='result'?(st.played?.[seat]||S.hands[seat][0]):S.hands[seat][0];if(!card)return;const names=st.names||room?.players.map(p=>p.name)||[];document.getElementById('leader').textContent=names[S.leader]||`J${S.leader+1}`;document.getElementById('cardName').textContent=card.name;document.getElementById('modifier').textContent=(card.modifier||'')+(S.mode==='blind'?' · MODE AVEUGLE':S.mode==='superblind'?' · MODE SUPER AVEUGLE':S.mode==='drunken'?' · RANDOM DRUNKEN HOOKUP':'');const img=document.getElementById('portraitImg'),fb=document.getElementById('portraitFallback');img.classList.remove('hidden');fb.classList.add('hidden');img.alt=card.name;img.src=resolveImagePath(card.image);img.onerror=()=>{img.classList.add('hidden');fb.textContent=initials(card.name);fb.classList.remove('hidden')};const stats=document.getElementById('stats');stats.innerHTML='';const cats=S.mode==='drunken'?S.randomCats:CATEGORIES;cats.forEach(cat=>{const meta=CATEGORY_META.find(x=>x.name===cat),row=document.createElement('div'),b=document.createElement('button'),sc=document.createElement('span');row.className='stat';['cat','cat-soft','cat-faint','cat-dark'].forEach((k,i)=>row.style.setProperty('--'+k,[meta.color,meta.soft,meta.faint,meta.dark][i]));b.type='button';b.className='statbutton';const showComment=S.mode!=='superblind',comment=showComment?(card.comments?.[cat]||''):'';b.innerHTML=`<span class="catIcon"><img src="${meta.icon}" alt=""></span><span class="statText"><span class="statName">${cat}</span>${showComment?`<span class="statComment">${comment}</span>`:''}</span>`;const canChoose=phase==='play'&&seat===S.leader&&!S.locked;b.disabled=!canChoose;b.onclick=()=>onlineFight(cat);sc.className='score';sc.textContent=S.mode==='classic'?card.scores[cat]:'?';row.append(b,sc);stats.append(row)});document.getElementById('players').innerHTML='';S.hands.forEach((h,i)=>{const x=document.createElement('span');x.className='badge';x.textContent=`${names[i]||`J${i+1}`} · ${h.length} carte${h.length>1?'s':''}${i===S.leader?' · LEADER':''}${i===seat?' · TOI':''}`;document.getElementById('players').append(x)})
   }
