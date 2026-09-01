@@ -38,6 +38,8 @@
     setTimeout(()=>{if(layer.classList.contains('show')){cannon(12,h*.60,-.25,20);cannon(w-12,h*.60,Math.PI+.25,20);cannon(w*.5,h*.58,-Math.PI/2,26)}},2100)
   }
   function show(){if(showing)return;showing=true;const [kind,id]=reactions[Math.floor(Math.random()*reactions.length)];const frame=layer.querySelector('.victoryFrame');const src=kind==='giphy'?`https://giphy.com/embed/${id}`:`https://tenor.com/embed/${id}`;frame.innerHTML=`<iframe src="${src}" allow="autoplay; fullscreen" loading="eager"></iframe>`;layer.classList.add('show');party();setTimeout(()=>{layer.classList.remove('show');setTimeout(()=>{frame.innerHTML='';showing=false},250)},5000)}
-  function watch(){const r=document.getElementById('result');if(!r)return;const visible=!r.classList.contains('hidden')&&r.textContent.trim();if(visible&&r.textContent!==lastText){lastText=r.textContent;show()}if(!visible)lastText=''}
+  function winnerIndexFrom(text){const m=text.match(/J(\d+)\s+gagne la manche/i)||text.match(/Joueur\s+(\d+)\s+remporte la partie/i);return m?Number(m[1])-1:null}
+  function shouldShow(text){const multi=window.QI_MULTIPLAYER;if(!multi?.active)return true;const winner=winnerIndexFrom(text);return winner!==null&&winner===multi.seat}
+  function watch(){const r=document.getElementById('result');if(!r)return;const visible=!r.classList.contains('hidden')&&r.textContent.trim();if(visible&&r.textContent!==lastText){lastText=r.textContent;if(shouldShow(r.textContent))show()}if(!visible)lastText=''}
   new MutationObserver(watch).observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['class']});
 })();
