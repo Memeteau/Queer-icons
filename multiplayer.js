@@ -1,4 +1,16 @@
 (() => {
+  // Permanent self-healing guard: old cached scripts can still inject a second panel.
+  // Keep one multiplayer panel only, regardless of browser/cache/load order.
+  const dedupePanels=()=>{
+    const boxes=[...document.querySelectorAll('.multiBox')];
+    if(boxes.length>1) boxes.slice(1).forEach(el=>el.remove());
+  };
+  dedupePanels();
+  if(!window.__QI_MULTIPLAYER_DEDUPE_OBSERVER__){
+    window.__QI_MULTIPLAYER_DEDUPE_OBSERVER__=new MutationObserver(dedupePanels);
+    window.__QI_MULTIPLAYER_DEDUPE_OBSERVER__.observe(document.documentElement,{childList:true,subtree:true});
+  }
+
   if(window.__QI_MULTIPLAYER_LOADED__) return;
   window.__QI_MULTIPLAYER_LOADED__=true;
   const WS_URL='wss://queer-icons-multiplayer.onrender.com';
