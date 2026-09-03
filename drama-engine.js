@@ -89,6 +89,7 @@
   }
   function canPower(s,i){
     if(s.ended||s.locked||!s.hands[i]?.length)return 'Aucun atout disponible maintenant.';
+    if(i===s.leader)return 'Tu as la main : seuls les autres joueurs peuvent activer un atout.';
     if(!power(s.hands[i][0]))return 'Cette carte n’a pas d’atout.';
     if(!s.dq.charges[i])return 'Tu n’as plus de charge.';
     if(s.dq.used[i])return 'Un seul atout par joueur et par pli.';
@@ -185,7 +186,7 @@
     const t=clone(s),d=t.dq;
     if(action==='next'){
       if(!t.locked||(i!==t.leader&&i!==0))throw Error('Seul le leader ou l’hôte peut continuer.');
-      t.locked=false;t.round++;d.pending=null;d.ready={};d.used={};d.random={};d.fake={};d.two=null;d.reveal=[];d.notice='Choisissez une catégorie, puis chacun joue son atout ou passe.';prepare(t,rng);
+      t.locked=false;t.round++;d.pending=null;d.ready={};d.used={};d.random={};d.fake={};d.two=null;d.reveal=[];d.notice='Le leader choisit la catégorie ; seuls les autres joueurs peuvent activer un atout. Chacun valide le pli.';prepare(t,rng);
     }else{
       if(t.locked||!t.hands[i].length)throw Error('Action indisponible.');
       if(action==='power')activate(t,i,payload.target,rng);

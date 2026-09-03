@@ -11,9 +11,13 @@ de voir sa carte et de répondre. En ligne, chacun ne contrôle que son siège.
 
 Chaque joueur commence avec **trois charges**, plafonnées à trois. Une charge permet
 d'activer le pouvoir de la carte actuellement jouée ; aucun pouvoir n'est stocké.
-Un joueur peut activer au plus un atout par pli. Après le choix de catégorie, chacun
-doit activer son atout ou passer/valider avant la résolution. Une activation avant
-le choix de catégorie est également possible, et reste dépensée.
+Seuls les joueurs qui n’ont pas la main peuvent activer un atout, au plus un par
+joueur et par pli. Le leader choisit la catégorie et valide, sans pouvoir activer
+d’atout. Une activation avant le choix de catégorie reste possible pour les autres
+joueurs. Après le choix, chacun doit activer son atout ou passer/valider avant la
+résolution. Les effets déjà activés continuent pour leur durée prévue, même si leur
+propriétaire reprend la main. Cette restriction ne concerne pas l’action ultime,
+qui reste réservée au leader.
 
 Les durées incluent le pli en cours. Les valeurs de base ne changent jamais :
 les modifications sont des effets temporaires. +5 peut dépasser 100. Les tirages

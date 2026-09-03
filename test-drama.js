@@ -4,7 +4,7 @@ const D=require('./drama-engine');
 const base=require('./cards.json');
 let serial=0;
 function card(id='test-'+(++serial),value=30,f='WOKE'){return{id,name:id,modifier:f,image:'',comments:{},scores:Object.fromEntries(D.CATEGORIES.map(k=>[k,value]))};}
-function state(ids=['verlaine','plain'],n=8){const s={mode:'drama',hands:ids.map(id=>[card(id),...Array.from({length:n-1},()=>card())]),leader:0,round:1,pot:[],locked:false,ended:false};D.init(s,()=>0);return s;}
+function state(ids=['verlaine','plain'],n=8){const s={mode:'drama',hands:ids.map(id=>[card(id),...Array.from({length:n-1},()=>card())]),leader:0,round:1,pot:[],locked:false,ended:false};D.init(s,()=>0);s.leader=ids.length-1;return s;}
 const act=(s,i,type,data={},rng=()=>.5)=>D.applyAction(s,i,type,data,rng);
 function play(s,category='Courage'){
  if(!s.dq.pending)act(s,s.leader,'choose',{category});
@@ -25,10 +25,10 @@ test('Top dom +5 temporaire, sans muter le jeu de base',()=>{
  const s=state(['henri-iii','plain']),before=JSON.stringify(s.hands);act(s,0,'power');assert.equal(D.scores(s,0,s.hands[0][0]).Courage,35);assert.equal(D.scores(s,0,s.hands[0][1]).Courage,35);assert.equal(JSON.stringify(s.hands),before);play(s);next(s);assert.equal(D.scores(s,0,s.hands[0][0]).Courage,30);
 });
 test('Shady falsifie uniquement l’affichage',()=>{
- const s=state(['abel-bonnard','plain']);s.hands[0][0].scores.Courage=90;act(s,0,'power',{},()=>0);assert.equal(D.scores(s,0,s.hands[0][0],true).Courage,0);assert.equal(D.scores(s,0,s.hands[0][0]).Courage,90);play(s);assert.equal(s.dq.last.winner,0);
+ const s=state(['abel-bonnard','plain']);s.hands[1][0].scores.Courage=90;act(s,0,'power',{},()=>0);assert.equal(D.scores(s,1,s.hands[1][0],true).Courage,0);assert.equal(D.scores(s,1,s.hands[1][0]).Courage,90);play(s);assert.equal(s.dq.last.winner,1);
 });
 test('Delulu modifie le résultat réel des non-leaders pendant deux plis',()=>{
- const s=state(['jenny-salvette-de-lange','plain']);act(s,0,'power',{},()=>.99);assert.equal(D.scores(s,1,s.hands[1][0]).Courage,99);assert.equal(s.hands[1][0].scores.Courage,30);play(s);assert.equal(s.dq.last.winner,1);next(s);assert.equal(D.scores(s,0,s.hands[0][0]).Courage,50);play(s);next(s);assert.equal(s.dq.effects.some(e=>e.kind==='delulu'),false);
+ const s=state(['jenny-salvette-de-lange','plain']);act(s,0,'power',{},()=>.99);assert.equal(D.scores(s,0,s.hands[0][0]).Courage,99);assert.equal(s.hands[0][0].scores.Courage,30);play(s);assert.equal(s.dq.last.winner,0);next(s);assert.equal(D.scores(s,1,s.hands[1][0]).Courage,50);play(s);next(s);assert.equal(s.dq.effects.some(e=>e.kind==='delulu'),false);
 });
 test('Gala: neuf scores, quatre cartes réellement engagées',()=>{
  const s=state(['natalie-clifford-barney','plain']);for(const c of s.hands[0])for(const k of D.CATEGORIES)c.scores[k]=40;
@@ -51,13 +51,13 @@ test('Lobby vole deux cartes sans créer ni perdre de carte',()=>{
  const s=state(['robert-de-montesquiou','plain']);act(s,0,'power',{target:1});assert.deepEqual(s.hands.map(h=>h.length),[10,6]);unique(s);assert.equal(s.dq.charges[0],2);
 });
 test('Polémique reprend la main sans avancer la boule disco',()=>{
- const s=state(['plain','guy-hocquenghem']);act(s,0,'choose',{category:'Miracle'});act(s,1,'power');assert.equal(s.leader,1);assert.equal(s.dq.pending,null);assert.equal(s.dq.turn,0);assert.equal(s.dq.charges[1],2);assert.throws(()=>act(s,1,'power'),/Un seul/);
+ const s=state(['plain','guy-hocquenghem']);s.leader=0;act(s,0,'choose',{category:'Miracle'});act(s,1,'power');assert.equal(s.leader,1);assert.equal(s.dq.pending,null);assert.equal(s.dq.turn,0);assert.equal(s.dq.charges[1],2);assert.throws(()=>act(s,1,'power'),/Tu as la main/);
 });
 test('Side décale cycliquement les lignes pour le pli',()=>{
  const s=state(['louise-michel','plain']);D.CATEGORIES.forEach((k,i)=>s.hands[0][0].scores[k]=i);act(s,0,'power');assert.deepEqual(Object.values(D.scores(s,0,s.hands[0][0])),[8,0,1,2,3,4,5,6,7]);
 });
 test('Plan random remplace toutes les cartes et conserve le choix',()=>{
- const s=state(['maurice-sachs','plain']),old=s.hands.map(h=>h[0].id);act(s,0,'choose',{category:'Miracle'});act(s,0,'power');assert.equal(s.dq.pending,'Miracle');s.hands.forEach((h,i)=>assert.notEqual(h[0].id,old[i]));unique(s);
+ const s=state(['maurice-sachs','plain']),old=s.hands.map(h=>h[0].id);act(s,s.leader,'choose',{category:'Miracle'});act(s,0,'power');assert.equal(s.dq.pending,'Miracle');s.hands.forEach((h,i)=>assert.notEqual(h[0].id,old[i]));unique(s);
 });
 test('Lavement défausse trois cartes et résout une élimination',()=>{
  const s=state(['marquis-de-sade','plain'],3);act(s,0,'power',{target:1});assert.equal(s.dq.discard.length,3);assert.equal(s.ended,true);assert.equal(s.dq.last.winner,0);unique(s);
@@ -89,24 +89,44 @@ test('Recharges plafonnées, aucune recharge sur rafraîchissement',()=>{
  const s=state(['henri-iii','plain']);s.hands[0][1]=card('panama-al-brown');act(s,0,'power');assert.equal(s.dq.charges[0],2);play(s);next(s);assert.equal(s.dq.charges[0],3);for(let k=0;k<3;k++)D.info(s,0);assert.equal(s.dq.charges[0],3);
 });
 test('Ultime: délai 11–20, leader autorisé, même famille chez chacun',()=>{
- const s=state(['coccinelle','plain']);assert.equal(s.dq.unlock,11);assert.throws(()=>act(s,0,'ultimate',{category:'Courage'}),/explosé/);s.dq.turn=11;
+ const s=state(['coccinelle','plain']);s.leader=0;assert.equal(s.dq.unlock,11);assert.throws(()=>act(s,0,'ultimate',{category:'Courage'}),/explosé/);s.dq.turn=11;
  assert.throws(()=>act(s,1,'ultimate',{category:'Courage'}),/main/);
  s.hands[1][0].modifier='CONSERVATIVE';s.hands[1][0].scores.Courage=100;
  act(s,0,'ultimate',{category:'Courage'});assert(s.ended);assert.equal(s.dq.ultimate.family,'WOKE');assert.deepEqual(s.dq.ultimate.totals.map(x=>x.value),[240,210]);assert.equal(s.dq.last.winner,0);
- const t=state(['marie-antoinette','plain']);t.hands[0][0].modifier='CONSERVATIVE';t.dq.turn=20;act(t,0,'ultimate',{category:'Miracle'});assert.equal(t.dq.ultimate.family,'CONSERVATIVE');
+ const t=state(['marie-antoinette','plain']);t.leader=0;t.hands[0][0].modifier='CONSERVATIVE';t.dq.turn=20;act(t,0,'ultimate',{category:'Miracle'});assert.equal(t.dq.ultimate.family,'CONSERVATIVE');
 });
 test('Ultime: égalité finale explicite, pas de vainqueur arbitraire',()=>{
- const s=state(['coccinelle','plain']);s.dq.turn=20;act(s,0,'ultimate',{category:'Courage'});assert.deepEqual(s.dq.ultimate.winners,[0,1]);assert.equal(s.dq.last.winner,null);
+ const s=state(['coccinelle','plain']);s.leader=0;s.dq.turn=20;act(s,0,'ultimate',{category:'Courage'});assert.deepEqual(s.dq.ultimate.winners,[0,1]);assert.equal(s.dq.last.winner,null);
 });
 test('Validation de phase, charges, propriétaire, révision et transaction',()=>{
- const s=state(['henri-iii','plain']),before=JSON.stringify(s);assert.throws(()=>act(s,1,'choose',{category:'Courage'}));assert.throws(()=>act(s,0,'power',{revision:99}));assert.throws(()=>act(s,1,'power'));assert.equal(JSON.stringify(s),before);
- act(s,0,'power');assert.throws(()=>act(s,0,'power'));play(s);assert.throws(()=>act(s,0,'power'));next(s);s.dq.charges[0]=0;s.hands[0][0]=card('henri-iii');assert.throws(()=>act(s,0,'power'),/charge/);
+ const s=state(['henri-iii','plain']),before=JSON.stringify(s);assert.throws(()=>act(s,0,'choose',{category:'Courage'}));assert.throws(()=>act(s,0,'power',{revision:99}));assert.throws(()=>act(s,1,'power'));assert.equal(JSON.stringify(s),before);
+ act(s,0,'power');assert.throws(()=>act(s,0,'power'));play(s);assert.throws(()=>act(s,0,'power'));next(s);s.leader=1;s.dq.charges[0]=0;s.hands[0][0]=card('henri-iii');assert.throws(()=>act(s,0,'power'),/charge/);
 });
 test('Gala peut être annulé si un autre pouvoir retire les cartes nécessaires',()=>{
- const s=state(['natalie-clifford-barney','marquis-de-sade'],5);act(s,0,'power');act(s,1,'power',{target:0});assert.equal(s.dq.pending,null);assert.match(s.dq.notice,/Gala annulé/);unique(s);
+ const s=state(['natalie-clifford-barney','marquis-de-sade','plain'],5);act(s,0,'power');act(s,1,'power',{target:0});act(s,2,'pass');assert.equal(s.dq.pending,null);assert.match(s.dq.notice,/Gala annulé/);unique(s);
 });
 test('Plusieurs victoires automatiques concurrentes donnent une égalité',()=>{
- const s=state(['verlaine','mlle-de-maupin']);act(s,0,'power');act(s,1,'power');play(s);assert.equal(s.dq.last.winner,null);assert.equal(s.pot.length,2);
+ const s=state(['verlaine','mlle-de-maupin','plain']);act(s,0,'power');act(s,1,'power');play(s);assert.equal(s.dq.last.winner,null);assert.equal(s.pot.length,3);
+});
+test('Le leader ne peut activer aucun des 21 atouts, avant ou après son choix',()=>{
+ for(const id of Object.keys(D.POWERS)){
+  const s=state([id,'plain']);s.leader=0;
+  for(const pending of [false,true]){
+   if(pending)act(s,0,'choose',{category:'Courage'});
+   const before=JSON.stringify(s);
+   assert.match(D.canPower(s,0),/Tu as la main/);
+   assert.throws(()=>act(s,0,'power',{target:1}),/Tu as la main/);
+   assert.equal(JSON.stringify(s),before);
+  }
+ }
+});
+test('Un non-leader peut activer un atout avant ou après le choix de catégorie',()=>{
+ for(const pending of [false,true]){
+  const s=state(['henri-iii','plain']);
+  if(pending)act(s,1,'choose',{category:'Courage'});
+  act(s,0,'power');assert.equal(s.dq.charges[0],2);
+  assert.equal(D.scores(s,0,s.hands[0][0]).Courage,35);
+ }
 });
 test('100 parties 2–6 joueurs: cartes conservées et scores de base intacts',()=>{
  const original=JSON.stringify(base);

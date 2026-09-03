@@ -64,6 +64,24 @@ test('Host and guest: relay a category and both responses, then next round',()=>
  assert(host.state().locked);assert.deepEqual(host.state(),guest.state());assert.match(guest.ids.get('result').innerHTML,/manche|ÉGALITÉ/);
  host.ids.get('nextBtn').click();net.flush();assert.equal(host.state().round,2);assert.deepEqual(host.state(),guest.state());
 });
+test('Le leader voit son atout désactivé sur un appareil partagé',()=>{
+ const c=client(relay());c.ids.get('startBtn').click();
+ c.run("S.hands[S.leader][0].id='henri-iii';DramaUI.render()");
+ assert.match(c.ids.get('dramaPanel').innerHTML,/id="dramaPower"[^>]*disabled/);
+ assert.match(c.ids.get('dramaPanel').innerHTML,/Tu as la main/);
+});
+test('Le relais refuse les atouts du leader, hôte ou invité, sans dépenser de charge',()=>{
+ for(const leader of [0,1]){
+  const net=relay(),h=client(net),g=client(net);
+  h.ids.get('multiName').value='H';g.ids.get('multiName').value='G';
+  h.ids.get('createRoom').onclick();net.flush();g.ids.get('multiCode').value='TESTX';g.ids.get('joinRoom').onclick();net.flush();h.ids.get('onlineStart').onclick();net.flush();
+  h.run(`S.leader=${leader};S.hands[${leader}][0].id='henri-iii'`);
+  const before=JSON.stringify(h.state()),c=leader===0?h:g;
+  c.run("QI_MULTIPLAYER.dramaAction('power',{revision:S.dq.revision})");net.flush();
+  assert.equal(JSON.stringify(h.state()),before);
+  assert.match(c.ids.get('dramaPanel').innerHTML,/Tu as la main/);
+ }
+});
 test('Guest cannot spoof another actor or replay a stale action',()=>{
  const net=relay(),h=client(net),g=client(net);h.ids.get('multiName').value='H';g.ids.get('multiName').value='G';h.ids.get('createRoom').onclick();net.flush();g.ids.get('multiCode').value='TESTX';g.ids.get('joinRoom').onclick();net.flush();h.ids.get('onlineStart').onclick();net.flush();
  h.run('S.leader=0');h.run("QI_MULTIPLAYER.dramaAction('choose',{category:'Courage',revision:S.dq.revision})");net.flush();const before=JSON.stringify(h.state());
