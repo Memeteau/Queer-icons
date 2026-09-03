@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "test": "node test-engine.js"
+    "test": "node test-engine.js && node --test test-drama.js test-drama-client.js"
   },
   "engines": {
     "node": ">=20"
