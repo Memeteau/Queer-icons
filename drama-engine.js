@@ -7,10 +7,10 @@
     'henri-iii':{id:'top',name:'Top dom',text:'+5 à tous les scores de tes cartes pour ce pli.'},
     'rimbaud':{id:'gaydar',name:'Gaydar',text:'Pendant 3 plis, tu bats automatiquement les cartes CONSERVATIVE.'},
     'robert-de-montesquiou':{id:'lobby',name:'Lobby gay',text:'Vole 2 cartes au hasard à un adversaire.',target:true},
-    'guy-hocquenghem':{id:'twitter',name:'Polémique Twitter',text:'Annule le choix en cours et reprends la main, sans déplacer les cartes.'},
+    'guy-hocquenghem':{id:'twitter',name:'Polémique Twitter',text:'Reprends la main avant le choix de catégorie, sans déplacer les cartes.'},
     'natalie-clifford-barney':{id:'gala',name:'Gala de charité',text:'Chacun engage 4 cartes. On additionne leurs 9 scores.'},
     'louise-michel':{id:'side',name:'Side',text:'Décale tes scores d’une ligne vers le bas pour ce pli ; la dernière revient en haut.'},
-    'maurice-sachs':{id:'random',name:'Plan d’un soir random',text:'Tout le monde change de carte au hasard. La catégorie est conservée.'},
+    'maurice-sachs':{id:'random',name:'Plan d’un soir random',text:'Tout le monde change de carte au hasard, puis le leader choisit la catégorie.'},
     'marquis-de-sade':{id:'lavement',name:'Expert du lavement',text:'Les 3 premières cartes d’un adversaire sortent définitivement du jeu.',target:true},
     'francois-villon':{id:'accident',name:'Accident',text:'Égalité forcée, cartes à la cagnotte. Le prochain pli se joue sur Courage.'},
     'mlle-de-maupin':{id:'theater',name:'Theater camp',text:'Victoire automatique si ta carte porte le badge Théâtre.'},
@@ -38,7 +38,7 @@
   const clone=x=>JSON.parse(JSON.stringify(x));
   const shuffled=(items,rng)=>{const a=items.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
   function init(s,rng=Math.random){
-    s.dq={version:1,revision:0,turn:0,unlock:10+1+Math.floor(rng()*10),charges:s.hands.map(()=>3),effects:[],discard:[],reserve:[],pending:null,ready:{},used:{},entered:{},random:{},fake:{},reveal:[],last:null,notice:'Trois atouts chacun. La boule disco s’éveille après 10 plis.'};
+    s.dq={version:1,revision:0,turn:0,unlock:10+1+Math.floor(rng()*10),charges:s.hands.map(()=>3),effects:[],discard:[],reserve:[],pending:null,ready:{},used:{},entered:{},random:{},fake:{},reveal:[],last:null,notice:'Les non-leaders jouent éventuellement leur atout, puis le leader choisit la catégorie.'};
     s.leader=Math.floor(rng()*s.hands.length);s.locked=false;s.ended=false;prepare(s,rng);return s;
   }
   const active=(s,kind,owner)=>s.dq.effects.filter(e=>e.kind===kind&&e.until>s.dq.turn&&(owner===undefined||e.owner===owner));
@@ -93,7 +93,6 @@
     if(!power(s.hands[i][0]))return 'Cette carte n’a pas d’atout.';
     if(!s.dq.charges[i])return 'Tu n’as plus de charge.';
     if(s.dq.used[i])return 'Un seul atout par joueur et par pli.';
-    if(s.dq.ready[i])return 'Tu as déjà validé ce pli.';
     return '';
   }
   function activate(s,i,target,rng){
@@ -107,14 +106,12 @@
     switch(p.id){
       case 'lobby':{for(let k=0;k<2&&s.hands[target].length;k++){const j=Math.floor(rng()*s.hands[target].length);s.hands[i].push(...s.hands[target].splice(j,1));}break;}
       case 'lavement':d.discard.push(...s.hands[target].splice(0,3));break;
-      case 'twitter':s.leader=i;d.pending=null;d.ready={};d.effects=d.effects.filter(e=>e.kind!=='gala');d.notice+=' Choix annulé : tu reprends la main.';break;
+      case 'twitter':s.leader=i;d.notice+=' Tu reprends la main.';break;
       case 'random':for(const j of a){const old=s.hands[j].shift(),idx=Math.floor(rng()*s.hands[j].length),next=s.hands[j].splice(idx,1)[0];s.hands[j].unshift(next);s.hands[j].push(old);}break;
-      case 'gala':add(s,p.id,i);d.pending='gala';d.ready={};break;
+      case 'gala':add(s,p.id,i);d.pending='gala';d.ready=Object.fromEntries(a.map(j=>[j,true]));break;
       default:add(s,p.id,i,['gaydar','chemsex','shady','velvet'].includes(p.id)?3:['poppers','delulu','province','popstar'].includes(p.id)?2:1);
     }
     prepare(s,rng);
-    // A power is a response. Earlier uses remain spent if Twitter reopens the choice.
-    if(d.pending)d.ready[i]=true;
   }
   function compare(s,x,y){
     const cx=active(s,'chemsex',x.i)[0],cy=active(s,'chemsex',y.i)[0];
@@ -186,16 +183,16 @@
     const t=clone(s),d=t.dq;
     if(action==='next'){
       if(!t.locked||(i!==t.leader&&i!==0))throw Error('Seul le leader ou l’hôte peut continuer.');
-      t.locked=false;t.round++;d.pending=null;d.ready={};d.used={};d.random={};d.fake={};d.two=null;d.reveal=[];d.notice='Le leader choisit la catégorie ; seuls les autres joueurs peuvent activer un atout. Chacun valide le pli.';prepare(t,rng);
+      t.locked=false;t.round++;d.pending=null;d.ready={};d.used={};d.random={};d.fake={};d.two=null;d.reveal=[];d.notice='Les joueurs sans la main peuvent activer un atout. Le leader choisit ensuite la catégorie.';prepare(t,rng);
     }else{
       if(t.locked||!t.hands[i].length)throw Error('Action indisponible.');
       if(action==='power')activate(t,i,payload.target,rng);
       else if(action==='choose'){
         if(i!==t.leader||d.pending)throw Error('Seul le leader choisit une catégorie.');
         if(!allowed(t).includes(payload.category))throw Error('Cette catégorie n’est pas disponible.');
-        d.pending=payload.category;d.ready={};
+        d.pending=payload.category;d.ready=Object.fromEntries(alive(t).map(j=>[j,true]));
       }else if(action==='pass'){
-        if(!d.pending||d.ready[i])throw Error('Aucun choix à valider.');d.ready[i]=true;
+        throw Error('Le pli est validé automatiquement dès que la catégorie est choisie.');
       }else if(action==='ultimate')endUltimate(t,i,payload.category);
       else throw Error('Action inconnue.');
       if(!t.ended)resolve(t,rng);

@@ -43,8 +43,7 @@ function relay(){
 }
 test('Local: the actual start button selects Drama Queen and renders 9 rows',()=>{
  const c=client();c.ids.get('startBtn').click();assert.equal(c.state().mode,'drama');assert.equal(c.state().dq.charges.length,2);assert.equal(c.ids.get('stats').children.length,9);assert.match(c.ids.get('dramaPanel').innerHTML,/Drama Queen/);
- c.run("DramaUI.apply(S.leader,'choose',{category:'Courage',revision:S.dq.revision})");assert(c.ids.get('dramaPass'));
- c.run("DramaUI.apply(0,'pass',{});DramaUI.apply(1,'pass',{})");assert(c.state().locked);c.ids.get('nextBtn').click();assert.equal(c.state().round,2);assert.equal(c.state().locked,false);
+ c.run("DramaUI.apply(S.leader,'choose',{category:'Courage',revision:S.dq.revision})");assert(c.state().locked);assert.equal(c.ids.get('dramaPass'),undefined);c.ids.get('nextBtn').click();assert.equal(c.state().round,2);assert.equal(c.state().locked,false);
 });
 test('Local: returning to classic keeps the previous normal game available',()=>{
  const c=client();c.ids.get('startBtn').click();c.ids.get('restartBtn').click();c.ids.get('gameMode').value='classic';c.ids.get('startBtn').click();assert.equal(c.state().mode,'classic');assert.equal(c.state().dq,undefined);c.run("fight('Courage')");assert.equal(c.state().locked,true);assert.equal(c.ids.get('stats').children.length,9);
@@ -60,7 +59,6 @@ test('Host and guest: relay a category and both responses, then next round',()=>
  assert.equal(host.state().mode,'drama');assert.deepEqual(guest.state(),host.state());
  const leader=host.state().leader===0?host:guest;
  leader.run("QI_MULTIPLAYER.dramaAction('choose',{category:'Courage',revision:S.dq.revision})");net.flush();
- host.run("QI_MULTIPLAYER.dramaAction('pass',{revision:S.dq.revision})");net.flush();guest.run("QI_MULTIPLAYER.dramaAction('pass',{revision:S.dq.revision})");net.flush();
  assert(host.state().locked);assert.deepEqual(host.state(),guest.state());assert.match(guest.ids.get('result').innerHTML,/manche|ÉGALITÉ/);
  host.ids.get('nextBtn').click();net.flush();assert.equal(host.state().round,2);assert.deepEqual(host.state(),guest.state());
 });

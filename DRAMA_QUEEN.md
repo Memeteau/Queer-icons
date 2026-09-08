@@ -12,12 +12,11 @@ de voir sa carte et de répondre. En ligne, chacun ne contrôle que son siège.
 Chaque joueur commence avec **trois charges**, plafonnées à trois. Une charge permet
 d'activer le pouvoir de la carte actuellement jouée ; aucun pouvoir n'est stocké.
 Seuls les joueurs qui n’ont pas la main peuvent activer un atout, au plus un par
-joueur et par pli. Le leader choisit la catégorie et valide, sans pouvoir activer
-d’atout. Une activation avant le choix de catégorie reste possible pour les autres
-joueurs. Après le choix, chacun doit activer son atout ou passer/valider avant la
-résolution. Les effets déjà activés continuent pour leur durée prévue, même si leur
-propriétaire reprend la main. Cette restriction ne concerne pas l’action ultime,
-qui reste réservée au leader.
+joueur et par pli. Tous les atouts éventuels doivent être joués **avant** le choix
+de catégorie. Le leader choisit ensuite la catégorie : ce clic valide et résout
+immédiatement le pli, sans bouton supplémentaire. Les effets déjà activés continuent
+pour leur durée prévue, même si leur propriétaire reprend la main. Cette restriction
+ne concerne pas l’action ultime, qui reste réservée au leader.
 
 Les durées incluent le pli en cours. Les valeurs de base ne changent jamais :
 les modifications sont des effets temporaires. +5 peut dépasser 100. Les tirages
@@ -31,10 +30,10 @@ aléatoires de Shady et Delulu vont de 0 à 100 et ne changent pas au rafraîchi
 | Henri III | Top dom | +5 à tous les scores des cartes possédées pour un pli. |
 | Rimbaud | Gaydar | Bat automatiquement les cartes CONSERVATIVE pendant trois plis. |
 | Robert de Montesquiou | Lobby gay | Vole deux cartes au hasard à un adversaire choisi. |
-| Guy Hocquenghem | Polémique Twitter | Annule le choix en cours et reprend la main, sans déplacement des cartes. |
+| Guy Hocquenghem | Polémique Twitter | Reprend la main avant le choix de catégorie, sans déplacement des cartes. |
 | Natalie Clifford Barney | Gala de charité | Chaque joueur engage quatre cartes ; les neuf catégories de ces quatre cartes sont additionnées. |
 | Louise Michel | Side | Décalage cyclique des neuf scores de sa carte d’une ligne vers le bas pour le pli. |
-| Maurice Sachs | Plan d’un soir random | Chacun remplace sa carte par une autre de sa pile au hasard ; l’ancienne rejoint le dessous. La catégorie est conservée. |
+| Maurice Sachs | Plan d’un soir random | Chacun remplace sa carte par une autre de sa pile au hasard ; l’ancienne rejoint le dessous. Le leader choisit ensuite la catégorie. |
 | Marquis de Sade | Expert du lavement | Les trois premières cartes d’un adversaire choisi sont défaussées définitivement, ou toutes celles qui lui restent s’il en a moins de trois. |
 | François Villon | Accident | Égalité forcée, cartes à la cagnotte et Courage imposé au pli suivant. |
 | Mlle de Maupin | Theater camp | Victoire automatique avec une carte du catalogue Théâtre. |
@@ -120,10 +119,10 @@ Cette liste éditoriale est indépendante de la profession affichée.
   pas automatiquement battue par cet effet.
 - Courage imposé prime sur Poppers, puis sur la comparaison des minima et Velvet.
 - Gala porte sur les neuf catégories, donc ne dépend pas d'une catégorie ordinaire.
-  Il nécessite quatre cartes par joueur. S'il devient impossible après un vol ou
-  une défausse, le choix est rouvert sans rembourser les pouvoirs déjà dépensés.
-- Polémique Twitter annule aussi un Gala annoncé. Un tour annulé n'avance pas le
-  compteur des plis, et ne rembourse pas les charges déjà utilisées.
+  Il nécessite quatre cartes par joueur et résout immédiatement le pli lorsqu’il
+  est activé.
+- Polémique Twitter se joue avant tout choix : le joueur reprend la main sans faire
+  avancer le compteur des plis.
 - Popstar protège avant Zap. Zap rend les cartes plus tôt si leur absence bloquerait
   la partie avec moins de deux joueurs capables de jouer.
 - Les cartes définitivement défaussées réduisent le total encore disputé ; elles
