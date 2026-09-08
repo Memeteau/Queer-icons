@@ -42,8 +42,13 @@ function relay(){
  return {Socket,flush(){let count=0;while(queue.length){queue.shift()();assert(++count<1000,'relay recursion');}}};
 }
 test('Local: the actual start button selects Drama Queen and renders 9 rows',()=>{
- const c=client();c.ids.get('startBtn').click();assert.equal(c.state().mode,'drama');assert.equal(c.state().dq.charges.length,2);assert.equal(c.ids.get('stats').children.length,9);assert.match(c.ids.get('dramaPanel').innerHTML,/Drama Queen/);
+ const c=client();c.ids.get('startBtn').click();assert.equal(c.state().mode,'drama');assert.equal(c.state().dq.charges.length,2);assert.equal(c.ids.get('stats').children.length,9);assert.match(c.ids.get('dramaPanel').innerHTML,/Drama Queen/);assert.match(c.ids.get('modifier').textContent,/TU AS LA MAIN/);
  c.run("DramaUI.apply(S.leader,'choose',{category:'Courage',revision:S.dq.revision})");assert(c.state().locked);assert.equal(c.ids.get('dramaPass'),undefined);c.ids.get('nextBtn').click();assert.equal(c.state().round,2);assert.equal(c.state().locked,false);
+});
+test('Local: la carte consultée indique clairement si elle attend la main',()=>{
+ const c=client();c.ids.get('startBtn').click();const waiting=1-c.state().leader;
+ c.run(`document.getElementById('dramaSeat').value='${waiting}';document.getElementById('dramaSeat').onchange({target:document.getElementById('dramaSeat')})`);
+ assert.match(c.ids.get('modifier').textContent,/EN ATTENTE/);assert.match(c.ids.get('dramaBadges').innerHTML,/EN ATTENTE/);
 });
 test('Local: returning to classic keeps the previous normal game available',()=>{
  const c=client();c.ids.get('startBtn').click();c.ids.get('restartBtn').click();c.ids.get('gameMode').value='classic';c.ids.get('startBtn').click();assert.equal(c.state().mode,'classic');assert.equal(c.state().dq,undefined);c.run("fight('Courage')");assert.equal(c.state().locked,true);assert.equal(c.ids.get('stats').children.length,9);

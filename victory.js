@@ -27,13 +27,13 @@
   function particle(originX,originY){
     const p=document.createElement('i'),angle=Math.random()*Math.PI*2,dist=90+Math.random()*230;
     p.className='partyBit';p.textContent=['◆','●','■','✦','★','♥','🌈'][Math.floor(Math.random()*7)];p.style.color=palette[Math.floor(Math.random()*palette.length)];
-    p.style.setProperty('--ox',originX+'px');p.style.setProperty('--oy',originY+'px');p.style.setProperty('--ex',originX+Math.cos(angle)*dist+'px');p.style.setProperty('--ey',originY+Math.sin(angle)*dist+35+'px');p.style.setProperty('--r',(-360+Math.random()*720)+'deg');p.style.setProperty('--d',(.85+Math.random()*.5)+'s');
-    layer.appendChild(p);setTimeout(()=>p.remove(),1450);
+    p.style.setProperty('--ox',originX+'px');p.style.setProperty('--oy',originY+'px');p.style.setProperty('--ex',originX+Math.cos(angle)*dist+'px');p.style.setProperty('--ey',originY+Math.sin(angle)*dist+35+'px');p.style.setProperty('--r',(-360+Math.random()*720)+'deg');p.style.setProperty('--d',(2.8+Math.random()*.55)+'s');
+    layer.appendChild(p);setTimeout(()=>p.remove(),3600);
   }
   function show(message,withParticles){
     clearTimeout(hideTimer);layer.querySelector('.victoryToast').textContent=message;layer.classList.add('show');
     if(withParticles){const x=innerWidth/2,y=Math.min(90,innerHeight*.16);for(let i=0;i<36;i++)particle(x,y);}
-    hideTimer=setTimeout(()=>layer.classList.remove('show'),1250);
+    hideTimer=setTimeout(()=>layer.classList.remove('show'),3500);
   }
   function watch(){
     const r=document.getElementById('result');if(!r)return;

@@ -7,7 +7,7 @@
   const option=document.createElement('option');option.value='drama';option.textContent='Drama Queen — atouts, recharges et boule disco';document.getElementById('gameMode').append(option);
   const style=document.createElement('style');style.textContent=`
     .dramaPanel{margin:12px 0;padding:16px;border:1px solid #e879d3;border-radius:20px;background:linear-gradient(125deg,#37163f,#171023);font-size:16px}
-    .dramaPanel h3{margin:0 0 10px}.dramaBadges{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.dramaBadge{font-size:14px;border:1px solid #9a70b2;border-radius:14px;padding:5px 9px;background:#351c42}.dramaBadge.ultimate{border-color:#f1cf54;color:#ffe58a}
+    .dramaPanel h3{margin:0 0 10px}.dramaBadges{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.dramaBadge{font-size:14px;border:1px solid #9a70b2;border-radius:14px;padding:5px 9px;background:#351c42}.dramaBadge.ultimate{border-color:#f1cf54;color:#ffe58a}.dramaBadge.turnLeader{border-color:#ffe778;background:#5c3a0b;color:#fff2a7;box-shadow:0 0 14px #f1cf5466}.dramaBadge.turnWaiting{border-color:#6d6073;background:#27202c;color:#c3b7c8}
     .dramaLine{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.dramaLine>*{flex:1}.dramaPanel p{line-height:1.45;margin:10px 0}.dramaPanel small{font-size:14px;color:#ded0e5}.discoBall{font-size:42px;display:inline-block;flex:none}.discoWarm{animation:discoPulse 1.4s ease-in-out infinite}.discoReady{filter:drop-shadow(0 0 12px #ffd45b)}
     .dramaError{padding:10px;border:1px solid #ff94ba;border-radius:10px;color:#ffbed3}.dramaPanel select{margin-bottom:10px}.dramaPanel button{margin:5px 0}.dramaPanel button:focus-visible,.dramaPanel select:focus-visible{outline:3px solid #fff;outline-offset:3px}.dramaNotice{border-left:3px solid #f1cf54;padding-left:12px}.dramaPanel details{margin-top:12px}.dramaPanel summary{cursor:pointer;font-weight:bold}.dramaPanel li{margin-bottom:8px;font-size:14px}.dramaPanel .waitReady{font-size:14px;color:#dfc9e9}
     @keyframes discoPulse{50%{transform:rotate(9deg) scale(1.13)}}@media(prefers-reduced-motion:reduce){.discoWarm{animation:none}}
@@ -16,6 +16,8 @@
   const badges=document.createElement('div');badges.className='dramaBadges';badges.id='dramaBadges';document.getElementById('modifier').after(badges);
   const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const $=id=>document.getElementById(id);
+  const cardPanel=()=>document.querySelector?.('.card')||null;
+  function markHand(hasHand){const card=cardPanel();if(!card)return;card.classList.toggle('turnLeader',hasHand);card.classList.toggle('turnWaiting',!hasHand);}
   function context(){return window.QI_MULTIPLAYER||{active:false};}
   function names(){const online=context();return S.hands.map((_,i)=>online.active&&online.names?.[i]||`J${i+1}`);}
   function actor(){return context().active?context().seat:localSeat;}
@@ -36,9 +38,10 @@
     panel.classList.remove('hidden');$('round').textContent=S.round;$('leader').textContent=n[S.leader]||`J${S.leader+1}`;
     $('potCount').textContent=S.pot.length;$('totalCount').textContent=D.allCount(S)-d.discard.length;
     $('players').innerHTML=S.hands.map((h,j)=>`<span class="badge">${escape(n[j])} · ${h.length} cartes · ${d.charges[j]}/3 atouts${j===S.leader?' · LEADER':''}${j===i?' · TOI':''}</span>`).join('');
-    $('cardName').textContent=c?.name||'Plus de carte';$('modifier').textContent=`${D.family(c)} · DRAMA QUEEN`;
+    const hasHand=i===S.leader;markHand(hasHand);
+    $('cardName').textContent=c?.name||'Plus de carte';$('modifier').textContent=`${D.family(c)} · DRAMA QUEEN · ${hasHand?'TU AS LA MAIN':'EN ATTENTE'}`;
     if(c){const img=$('portraitImg'),fb=$('portraitFallback');img.classList.remove('hidden');fb.classList.add('hidden');img.alt=c.name;const src=resolveImagePath(c.image);if(img.getAttribute('src')!==src)img.src=src;img.onerror=()=>{img.classList.add('hidden');fb.textContent=initials(c.name);fb.classList.remove('hidden');};}
-    badges.innerHTML=[D.ultimate(c)?'<span class="dramaBadge ultimate">🪩 Action ultime</span>':'',c&&D.RECHARGERS.includes(c.id)?'<span class="dramaBadge">↻ Recharge +1</span>':'',c&&D.THEATER.includes(c.id)?'<span class="dramaBadge">Théâtre</span>':'',c&&D.ROYAL.includes(c.id)?'<span class="dramaBadge">Royauté</span>':''].join('');
+    badges.innerHTML=[`<span class="dramaBadge ${hasHand?'turnLeader':'turnWaiting'}">${hasHand?'✦ TU AS LA MAIN':'EN ATTENTE'}</span>`,D.ultimate(c)?'<span class="dramaBadge ultimate">🪩 Action ultime</span>':'',c&&D.RECHARGERS.includes(c.id)?'<span class="dramaBadge">↻ Recharge +1</span>':'',c&&D.THEATER.includes(c.id)?'<span class="dramaBadge">Théâtre</span>':'',c&&D.ROYAL.includes(c.id)?'<span class="dramaBadge">Royauté</span>':''].join('');
     $('stats').innerHTML='';
     if(c&&!S.ended){
       const values=S.locked?c.scores:D.scores(S,i,c,true),allowed=D.allowed(S);
@@ -76,10 +79,10 @@
   }
   const oldStart=window.start,oldRender=window.render,oldFight=window.fight,oldNext=window.next,oldRestart=window.restart,oldEnd=window.end;
   window.start=function(){error='';return oldStart();};
-  window.render=function(){if(S.mode==='drama'){if(!S.dq){D.init(S);localSeat=S.leader;}renderDrama();}else{panel.classList.add('hidden');badges.innerHTML='';oldRender();}};
+  window.render=function(){if(S.mode==='drama'){if(!S.dq){D.init(S);localSeat=S.leader;}renderDrama();}else{panel.classList.add('hidden');badges.innerHTML='';oldRender();markHand(true);}};
   window.fight=function(cat){if(S.mode==='drama')dispatch('choose',{category:cat});else oldFight(cat);};
   window.next=function(){if(S.mode==='drama')dispatch('next');else oldNext();};
   window.end=function(w){if(S.mode==='drama')renderDrama();else oldEnd(w);};
-  window.restart=function(){panel.classList.add('hidden');badges.innerHTML='';oldRestart();};
+  window.restart=function(){panel.classList.add('hidden');badges.innerHTML='';markHand(true);oldRestart();};
   window.DramaUI={render:renderDrama,showError(message){error=message;renderDrama();},apply(actor,action,payload){D.applyAction(S,actor,action,payload);error='';renderDrama();},isActive:()=>S.mode==='drama'};
 })();

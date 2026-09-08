@@ -139,6 +139,14 @@ Le protocole existant diffuse le jeu complet aux clients : le minuteur est cach�
 l'interface, pas protégé d'une inspection technique. Il ne s'agit pas d'un nouveau
 serveur anti-triche. Cette mise à jour ne modifie pas le service relais distant.
 
+## Lisibilité de la main
+
+La carte du joueur qui a la main est plus lumineuse, plus contrastée et porte
+explicitement la mention **TU AS LA MAIN**. Les cartes des autres joueurs sont
+légèrement désaturées et portent la mention **EN ATTENTE**. Lorsqu'un joueur reprend
+la main, la célébration légère et non bloquante reste visible **3,5 secondes** ; les
+particules ne sont déclenchées qu'à ce moment-là.
+
 `npm test` couvre le moteur historique, les 21 pouvoirs, les collisions d'effets,
 les recharges, l'ultime, 100 parties de deux à six joueurs et des tests du client et
 du protocole hôte/invité dans des contextes JavaScript séparés. Les tests du client
