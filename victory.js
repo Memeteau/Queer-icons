@@ -8,6 +8,20 @@
     .partyBit{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity;font-size:clamp(14px,3vw,25px);animation:partyBurst var(--d) cubic-bezier(.08,.72,.22,1) forwards}
     @keyframes partyBurst{0%{transform:translate3d(var(--ox),var(--oy),0) scale(.25);opacity:0}12%{opacity:1}100%{transform:translate3d(var(--ex),var(--ey),0) scale(.75) rotate(var(--r));opacity:0}}
     @media(prefers-reduced-motion:reduce){.partyBit{display:none}.victoryToast{transition:none}}
+
+    /* Drama Queen result overlay: results are one white typographic block;
+       the humorous reaction is visually separated and keeps its win/loss color. */
+    .dqResultCat,.dqScores,.dqVerdict{
+      color:#fff!important;
+      font-family:Georgia,"Times New Roman",serif!important;
+      text-shadow:none!important;
+    }
+    .dqResultCat{font-weight:800!important}
+    .dqScores{font-weight:900!important}
+    .dqVerdict{font-weight:900!important}
+    .dqReaction{margin-top:42px!important;padding-top:4px}
+    .dqReaction.win{color:#ffe889!important;text-shadow:0 0 7px #fff3a6,0 0 18px #ffc928!important}
+    .dqReaction.lose{color:#e7a8ff!important;text-shadow:0 0 8px #f0c4ff,0 0 24px #9d45c9,0 0 48px #6a2888!important}
   `;
   document.head.appendChild(style);
   const layer=document.createElement('div');
