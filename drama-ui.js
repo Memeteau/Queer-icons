@@ -9,13 +9,14 @@
   const pick=a=>a[Math.floor(Math.random()*a.length)];
   const option=document.createElement('option');option.value='drama';option.textContent='Drama Queen — atouts, recharges et boule disco';document.getElementById('gameMode').append(option);
   const style=document.createElement('style');style.textContent=`
-    .dramaPanel{margin:12px 0;padding:16px;border:1px solid #e879d3;border-radius:20px;background:linear-gradient(125deg,#37163f,#171023);font-size:16px}
-    .dramaLine{display:flex;gap:12px;align-items:center}.dramaLine>*{flex:1}.dramaLine .discoBall{flex:none}.dramaPanel h3{margin:0 0 5px}.dramaPanel p{line-height:1.45;margin:10px 0}.dramaPanel small{font-size:14px;color:#ded0e5}.discoBall{font-size:42px;display:inline-block}.discoWarm{animation:discoPulse 1.4s ease-in-out infinite}.discoReady{filter:drop-shadow(0 0 12px #ffd45b)}
-    .dramaCharges{display:flex;gap:4px;justify-content:flex-end;align-items:center}.dramaCharge{font-size:24px;color:#ffe36c;text-shadow:0 0 9px #ffd54a}.dramaCharge.off{color:#59435f;text-shadow:none;opacity:.45}
+    .dramaPanel{margin:12px 0 18px;padding:20px 18px;border:1.5px solid #ee72d8;border-radius:24px;background:radial-gradient(circle at 20% 25%,#4a1f5a88 0,transparent 36%),linear-gradient(125deg,#32153b,#140d1d 72%);font-size:16px;box-shadow:inset 0 0 28px #8d3d9150,0 0 18px #e55bd32b}
+    .dramaLine{display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:16px;align-items:center}.dramaLine .discoBall{justify-self:center}.dramaPanel h3{margin:0 0 6px}.dramaTitle{font-family:Georgia,"Times New Roman",serif;font-size:clamp(28px,7vw,44px);line-height:.92;font-weight:900;color:#ffd8fb;text-shadow:0 0 7px #ffccfa,0 0 18px #ef55d3}.dramaPhase{display:block;margin-top:12px;font-size:16px;line-height:1.35;color:#f4eaf7}.dramaPanel p{line-height:1.45;margin:10px 0}.dramaPanel small{font-size:14px;color:#ded0e5}.discoBall{font-size:58px;display:inline-block;filter:drop-shadow(0 0 10px #d98de9)}.discoWarm{animation:discoPulse 1.4s ease-in-out infinite}.discoReady{filter:drop-shadow(0 0 14px #ffd45b)}
+    .dramaCharges{display:flex;gap:5px;justify-content:flex-end;align-items:center}.dramaCharge{font-size:31px;color:#ffe36c;text-shadow:0 0 9px #ffd54a,0 0 18px #ffbd2d}.dramaCharge.off{color:#59435f;text-shadow:none;opacity:.35}
     .powerStar{display:block;width:62px;height:62px;margin:12px auto 4px;padding:0;border:0;background:transparent;color:#ffe36c;font-size:48px;line-height:1;filter:drop-shadow(0 0 9px #ffd54a);animation:starBreath 1.8s ease-in-out infinite}.powerBox{margin-top:10px;padding:12px;border:1px solid #9a70b2;border-radius:16px;background:#24132d}.powerBox h3{color:#ffe58a}.powerBox button{margin-top:8px}.dramaError{padding:10px;border:1px solid #ff94ba;border-radius:10px;color:#ffbed3}.dramaPanel select{margin-bottom:10px}.dramaPanel button:focus-visible,.dramaPanel select:focus-visible{outline:3px solid #fff;outline-offset:3px}
     .dqWin,.dqLose{font-family:Georgia,"Times New Roman",serif;font-weight:900;text-align:center;letter-spacing:.01em}.dqWin{padding:12px 16px;color:#ffe889;font-size:clamp(24px,6vw,42px);background:radial-gradient(ellipse at center,#7a581c66 0,transparent 68%);text-shadow:0 0 5px #fff3a6,0 0 14px #ffc928,0 0 30px #f3b600;animation:goldShimmer 1.25s ease-in-out infinite alternate}.dqLose{position:relative;margin:0;padding:13px 16px;color:#e7a8ff;font-size:clamp(22px,5.5vw,36px);background:radial-gradient(ellipse at center,#8b3bb044 0,transparent 72%);text-shadow:0 0 7px #e4a4ff,0 0 22px #8f43b8,0 0 42px #6a2888;animation:purpleSmoke 2.4s ease-in-out infinite alternate}.dqLose:before,.dqLose:after{content:"";position:absolute;inset:-10px 5%;pointer-events:none;background:radial-gradient(ellipse at 30% 55%,#b968d22b,transparent 52%),radial-gradient(ellipse at 72% 45%,#74438c33,transparent 48%);filter:blur(13px);animation:smokeDrift 3s ease-in-out infinite alternate}
     .dqReclaim{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;pointer-events:none;overflow:hidden;background:radial-gradient(circle,#35134a55,transparent 62%)}.dqReclaimText{position:relative;z-index:2;font-family:Georgia,"Times New Roman",serif;font-weight:900;font-size:clamp(40px,11vw,92px);text-align:center;color:#fff;text-shadow:0 0 10px #fff,0 0 24px #ff4bd8,0 0 42px #ffd34d;animation:reclaimZoom 1.05s cubic-bezier(.2,1.35,.4,1) both}.dqRainbow{position:absolute;width:130vw;height:70vw;border-radius:50%;border:clamp(18px,5vw,50px) solid transparent;background:linear-gradient(#0000,#0000) padding-box,conic-gradient(#ff4d6d,#ffcc4d,#65e572,#55b8ff,#a76cff,#ff4dc4,#ff4d6d) border-box;opacity:.72;filter:blur(1px);transform:translateY(30%)}.dqSpark{position:absolute;color:#fff5a4;font-size:clamp(22px,5vw,52px);animation:sparkPop 1.4s ease-out infinite alternate}
     @keyframes discoPulse{50%{transform:rotate(9deg) scale(1.13)}}@keyframes starBreath{50%{transform:scale(1.12);filter:drop-shadow(0 0 17px #ffe46d)}}@keyframes goldShimmer{to{filter:brightness(1.25);text-shadow:0 0 8px #fff8c9,0 0 22px #ffd84c,0 0 38px #f0a900}}@keyframes purpleSmoke{to{filter:brightness(1.12)}}@keyframes smokeDrift{to{transform:translateX(8px) scale(1.05);opacity:.7}}@keyframes reclaimZoom{0%{transform:scale(.15);opacity:0}55%{transform:scale(1.18);opacity:1}100%{transform:scale(1);opacity:1}}@keyframes sparkPop{from{transform:scale(.4) rotate(-10deg);opacity:.35}to{transform:scale(1.3) rotate(12deg);opacity:1}}
+    @media(max-width:520px){.dramaPanel{padding:18px 14px}.dramaLine{grid-template-columns:70px minmax(0,1fr) auto;gap:10px}.discoBall{font-size:50px}.dramaCharge{font-size:27px}}
     @media(prefers-reduced-motion:reduce){.discoWarm,.powerStar,.dqWin,.dqLose,.dqLose:before,.dqLose:after,.dqReclaimText,.dqSpark{animation:none}}
   `;document.head.append(style);
   const panel=document.createElement('section');panel.id='dramaPanel';panel.className='dramaPanel hidden';document.getElementById('players').after(panel);
@@ -23,7 +24,8 @@
   const $=id=>document.getElementById(id);
   const cardPanel=()=>document.querySelector?.('.card')||null;
   const topbar=()=>document.querySelector?.('.topbar')||null;
-  function setTopbarHidden(hidden){topbar()?.classList.toggle('hidden',hidden);}
+  const playersBar=()=>document.getElementById('players');
+  function setChromeHidden(hidden){topbar()?.classList.toggle('hidden',hidden);playersBar()?.classList.toggle('hidden',hidden);}
   function context(){return window.QI_MULTIPLAYER||{active:false};}
   function names(){const online=context();return S.hands.map((_,i)=>online.active&&online.names?.[i]||`J${i+1}`);}
   function actor(){return context().active?context().seat:localSeat;}
@@ -33,12 +35,12 @@
   function celebrateReclaim(){document.querySelector('.dqReclaim')?.remove();const el=document.createElement('div');el.className='dqReclaim';el.innerHTML='<div class="dqRainbow"></div><span class="dqSpark" style="left:9%;top:19%">✦</span><span class="dqSpark" style="right:12%;top:25%">★</span><span class="dqSpark" style="left:18%;bottom:20%">★</span><span class="dqSpark" style="right:18%;bottom:17%">✦</span><div class="dqReclaimText">Not today, Satan !</div>';document.body.append(el);setTimeout(()=>el.remove(),3500);}
   function renderReactions(i,d){const {win,lose}=ensureReactionSlots();if(!win||!lose)return;win.classList.add('hidden');lose.classList.add('hidden');if(!S.locked||!d.last||d.last.winner==null)return;const key=`${S.round}:${d.last.winner}:${d.turn}`;if(key!==lastReactionKey){lastReactionKey=key;d.__uiWinLine=pick(WIN_LINES);d.__uiLoseLine=pick(LOSE_LINES);if(d.last.winner===i&&d.last.winner!==d.__uiPreviousLeader)celebrateReclaim();d.__uiPreviousLeader=d.last.winner;}if(d.last.winner===i){win.textContent=d.__uiWinLine||pick(WIN_LINES);win.classList.remove('hidden');}else{lose.textContent=d.__uiLoseLine||pick(LOSE_LINES);lose.classList.remove('hidden');}}
   function renderDrama(){
-    if(S.mode!=='drama'||!S.dq){panel.classList.add('hidden');setTopbarHidden(false);return;}
-    setTopbarHidden(true);
+    if(S.mode!=='drama'||!S.dq){panel.classList.add('hidden');setChromeHidden(false);return;}
+    setChromeHidden(true);
     if(!context().active&&!S.hands[localSeat]?.length)localSeat=S.leader;
     const i=actor(),d=S.dq,n=names(),c=cardView(i),inf=D.info(S,i),hasHand=i===S.leader;
     panel.classList.remove('hidden');$('round').textContent=S.round;$('leader').textContent=n[S.leader]||`J${S.leader+1}`;$('potCount').textContent=S.pot.length;$('totalCount').textContent=D.allCount(S)-d.discard.length;
-    $('players').innerHTML=S.hands.map((h,j)=>`<span class="badge">${escape(n[j])} · ${h.length} cartes${j===S.leader?' · LEADER':''}${j===i?' · TOI':''}</span>`).join('');
+    $('players').innerHTML='';
     const card=cardPanel();if(card){card.classList.remove('turnLeader','turnWaiting');}
     $('cardName').textContent=c?.name||'Plus de carte';$('modifier').textContent=D.family(c)||'';
     if(c){const img=$('portraitImg'),fb=$('portraitFallback');img.classList.remove('hidden');fb.classList.add('hidden');img.alt=c.name;const src=resolveImagePath(c.image);if(img.getAttribute('src')!==src)img.src=src;img.onerror=()=>{img.classList.add('hidden');fb.textContent=initials(c.name);fb.classList.remove('hidden');};}
@@ -48,7 +50,7 @@
     const opened=d.turn>=d.unlock,warming=d.turn>=10,phase=opened?'La boule disco a explosé !':warming?'La boule disco va bientôt exploser…':`La boule disco s’éveille dans ${Math.max(0,10-d.turn)} pli${10-d.turn>1?'s':''}.`;
     const stars=Array.from({length:3},(_,k)=>`<span class="dramaCharge ${k<inf.charges?'':'off'}">★</span>`).join('');
     const canShowPower=!S.ended&&!S.locked&&inf.power&&i!==S.leader;
-    panel.innerHTML=`<div class="dramaLine"><span aria-hidden="true" class="discoBall ${opened?'discoReady':warming?'discoWarm':''}">🪩</span><div><h3>Drama Queen</h3><span role="status">${phase}</span></div><div class="dramaCharges" aria-label="${inf.charges} atouts sur 3">${stars}</div></div>
+    panel.innerHTML=`<div class="dramaLine"><span aria-hidden="true" class="discoBall ${opened?'discoReady':warming?'discoWarm':''}">🪩</span><div><h3 class="dramaTitle">Drama Queen</h3><span class="dramaPhase" role="status">${phase}</span></div><div class="dramaCharges" aria-label="${inf.charges} atouts sur 3">${stars}</div></div>
       ${canShowPower?`<button id="dramaPowerStar" class="powerStar" aria-label="Voir l’atout de cette carte" title="Atout">★</button>${powerOpen?`<div class="powerBox"><h3>${escape(inf.power.name)}</h3><p>${escape(inf.power.text)}</p>${inf.power.target?`<label for="dramaTarget">Adversaire</label><select id="dramaTarget">${S.hands.map((h,j)=>h.length&&j!==i?`<option value="${j}">${escape(n[j])}</option>`:'').join('')}</select>`:''}<button id="dramaPower" class="secondary" ${D.canPower(S,i)?'disabled':''}>Activer · 1 atout</button>${D.canPower(S,i)?`<small>${escape(D.canPower(S,i))}</small>`:''}</div>`:''}`:''}
       ${opened&&inf.ultimate&&i===S.leader?`<div class="powerBox"><label for="dramaUltimateCategory">Catégorie de l’action ultime</label><select id="dramaUltimateCategory">${D.CATEGORIES.map(k=>`<option ${k===selectedUltimate?'selected':''}>${escape(k)}</option>`).join('')}</select><button id="dramaUltimate" class="primary" ${D.canUltimate(S,i)?'disabled':''}>${inf.family==='WOKE'?'We are family':'Pas un sujet, pas un problème'}</button></div>`:''}
       ${error?`<p role="alert" class="dramaError">${escape(error)}</p>`:''}`;
@@ -63,10 +65,10 @@
   }
   const oldStart=window.start,oldRender=window.render,oldFight=window.fight,oldNext=window.next,oldRestart=window.restart,oldEnd=window.end;
   window.start=function(){error='';powerOpen=false;lastReactionKey='';return oldStart();};
-  window.render=function(){if(S.mode==='drama'){if(!S.dq){D.init(S);localSeat=S.leader;S.dq.__uiPreviousLeader=S.leader;}renderDrama();}else{panel.classList.add('hidden');setTopbarHidden(false);oldRender();}};
+  window.render=function(){if(S.mode==='drama'){if(!S.dq){D.init(S);localSeat=S.leader;S.dq.__uiPreviousLeader=S.leader;}renderDrama();}else{panel.classList.add('hidden');setChromeHidden(false);oldRender();}};
   window.fight=function(cat){if(S.mode==='drama')dispatch('choose',{category:cat});else oldFight(cat);};
   window.next=function(){if(S.mode==='drama')dispatch('next');else oldNext();};
   window.end=function(w){if(S.mode==='drama')renderDrama();else oldEnd(w);};
-  window.restart=function(){panel.classList.add('hidden');setTopbarHidden(false);document.querySelectorAll('.dqWin,.dqLose,.dqReclaim').forEach(x=>x.remove());oldRestart();};
+  window.restart=function(){panel.classList.add('hidden');setChromeHidden(false);document.querySelectorAll('.dqWin,.dqLose,.dqReclaim').forEach(x=>x.remove());oldRestart();};
   window.DramaUI={render:renderDrama,showError(message){error=message;renderDrama();},apply(actor,action,payload){D.applyAction(S,actor,action,payload);error='';renderDrama();},isActive:()=>S.mode==='drama'};
 })();
