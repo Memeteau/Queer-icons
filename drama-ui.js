@@ -22,6 +22,8 @@
   const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const $=id=>document.getElementById(id);
   const cardPanel=()=>document.querySelector?.('.card')||null;
+  const topbar=()=>document.querySelector?.('.topbar')||null;
+  function setTopbarHidden(hidden){topbar()?.classList.toggle('hidden',hidden);}
   function context(){return window.QI_MULTIPLAYER||{active:false};}
   function names(){const online=context();return S.hands.map((_,i)=>online.active&&online.names?.[i]||`J${i+1}`);}
   function actor(){return context().active?context().seat:localSeat;}
@@ -31,7 +33,8 @@
   function celebrateReclaim(){document.querySelector('.dqReclaim')?.remove();const el=document.createElement('div');el.className='dqReclaim';el.innerHTML='<div class="dqRainbow"></div><span class="dqSpark" style="left:9%;top:19%">✦</span><span class="dqSpark" style="right:12%;top:25%">★</span><span class="dqSpark" style="left:18%;bottom:20%">★</span><span class="dqSpark" style="right:18%;bottom:17%">✦</span><div class="dqReclaimText">Not today, Satan !</div>';document.body.append(el);setTimeout(()=>el.remove(),3500);}
   function renderReactions(i,d){const {win,lose}=ensureReactionSlots();if(!win||!lose)return;win.classList.add('hidden');lose.classList.add('hidden');if(!S.locked||!d.last||d.last.winner==null)return;const key=`${S.round}:${d.last.winner}:${d.turn}`;if(key!==lastReactionKey){lastReactionKey=key;d.__uiWinLine=pick(WIN_LINES);d.__uiLoseLine=pick(LOSE_LINES);if(d.last.winner===i&&d.last.winner!==d.__uiPreviousLeader)celebrateReclaim();d.__uiPreviousLeader=d.last.winner;}if(d.last.winner===i){win.textContent=d.__uiWinLine||pick(WIN_LINES);win.classList.remove('hidden');}else{lose.textContent=d.__uiLoseLine||pick(LOSE_LINES);lose.classList.remove('hidden');}}
   function renderDrama(){
-    if(S.mode!=='drama'||!S.dq){panel.classList.add('hidden');return;}
+    if(S.mode!=='drama'||!S.dq){panel.classList.add('hidden');setTopbarHidden(false);return;}
+    setTopbarHidden(true);
     if(!context().active&&!S.hands[localSeat]?.length)localSeat=S.leader;
     const i=actor(),d=S.dq,n=names(),c=cardView(i),inf=D.info(S,i),hasHand=i===S.leader;
     panel.classList.remove('hidden');$('round').textContent=S.round;$('leader').textContent=n[S.leader]||`J${S.leader+1}`;$('potCount').textContent=S.pot.length;$('totalCount').textContent=D.allCount(S)-d.discard.length;
@@ -60,10 +63,10 @@
   }
   const oldStart=window.start,oldRender=window.render,oldFight=window.fight,oldNext=window.next,oldRestart=window.restart,oldEnd=window.end;
   window.start=function(){error='';powerOpen=false;lastReactionKey='';return oldStart();};
-  window.render=function(){if(S.mode==='drama'){if(!S.dq){D.init(S);localSeat=S.leader;S.dq.__uiPreviousLeader=S.leader;}renderDrama();}else{panel.classList.add('hidden');oldRender();}};
+  window.render=function(){if(S.mode==='drama'){if(!S.dq){D.init(S);localSeat=S.leader;S.dq.__uiPreviousLeader=S.leader;}renderDrama();}else{panel.classList.add('hidden');setTopbarHidden(false);oldRender();}};
   window.fight=function(cat){if(S.mode==='drama')dispatch('choose',{category:cat});else oldFight(cat);};
   window.next=function(){if(S.mode==='drama')dispatch('next');else oldNext();};
   window.end=function(w){if(S.mode==='drama')renderDrama();else oldEnd(w);};
-  window.restart=function(){panel.classList.add('hidden');document.querySelectorAll('.dqWin,.dqLose,.dqReclaim').forEach(x=>x.remove());oldRestart();};
+  window.restart=function(){panel.classList.add('hidden');setTopbarHidden(false);document.querySelectorAll('.dqWin,.dqLose,.dqReclaim').forEach(x=>x.remove());oldRestart();};
   window.DramaUI={render:renderDrama,showError(message){error=message;renderDrama();},apply(actor,action,payload){D.applyAction(S,actor,action,payload);error='';renderDrama();},isActive:()=>S.mode==='drama'};
 })();
